@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Design tokens
+   Base + structure: huzairahmedkhan.vercel.app (#0A0A0A dark,
+   one high-chroma accent). Accent hue: prystech.co --theme.
+   ============================================================ */
+@theme {
+  /* Surfaces — each step is faintly purple-tinted, not neutral grey */
+  --color-bg: #0a0a0a;
+  --color-surface: #121014;
+  --color-surface-2: #17141c;
+  --color-border: #241f2e;
+  --color-border-strong: #3a2f4d;
+
+  /* The purple */
+  --color-brand: #9b32fa;
+  --color-brand-bright: #b45cff;
+  --color-brand-deep: #460f76;
+  --color-brand-ink: #2e1157;
+
+  /* Text */
+  --color-fg: #edeaf2;
+  --color-muted: #a29cae;
+  --color-muted-2: #6e687a;
+
+  /* Type */
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Motion */
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-float-slow: float 14s ease-in-out infinite;
+  --animate-cue: cue 1.8s ease-in-out infinite;
+  --animate-wipe: wipe 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  --animate-shimmer: shimmer 2.5s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -28px, 0) scale(1.06);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+
+/* The clip-path wipe carried over from the old hero */
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* offset anchor targets so the fixed navbar doesn't cover headings */
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+
+  /* Purple focus ring, applied globally rather than per-component */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brand);
+  }
+}
+
+@layer components {
+  /* Section shell — one source of truth for rhythm and gutters */
+  .section {
+    @apply relative w-full px-5 py-24 sm:px-8 md:py-32;
+  }
+  .shell {
+    @apply mx-auto w-full max-w-6xl;
+  }
+  .shell-narrow {
+    @apply mx-auto w-full max-w-4xl;
+  }
+
+  /* Card: dark tinted surface, hairline border, purple on hover */
+  .card {
+    @apply relative rounded-2xl border border-border bg-surface transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-brand/50 hover:bg-surface-2 hover:shadow-[0_0_0_1px_rgba(155,50,250,0.15),0_18px_50px_-20px_rgba(155,50,250,0.45)];
+  }
+
+  /* Mono eyebrow label — the "> section" marker from the reference site */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-brand uppercase;
+  }
+
+  /* Text that fades into the brand purple */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-bright via-brand to-brand-bright bg-clip-text text-transparent;
+  }
+
+  /* Blurred radial glow behind hero / contact */
+  .orb {
+    @apply pointer-events-none absolute rounded-full blur-[100px] will-change-transform;
+  }
+
+  /* Faint dot grid, replaces the old stock textures */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(155, 50, 250, 0.12) 1px,
+      transparent 0
+    );
+    background-size: 32px 32px;
+  }
+}
+
+@layer utilities {
+  /* Fades a decorative layer out at the edges so it never hard-stops */
+  .mask-fade {
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+}
+
+/* Honour the OS setting: kill motion, keep everything visible */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
