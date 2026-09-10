@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#08090b",
   colorScheme: "dark",
 };
 
@@ -69,15 +69,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
-        {/* Scroll-in sections start at opacity 0 and are revealed by JS, so
-            without it they'd never appear. Show everything instead. */}
+        {/* Scroll-driven sections start dimmed and are revealed by ScrollFx,
+            so without JS they'd never appear. Show everything instead. */}
         <noscript>
-          <style>{`[data-reveal]{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`[data-reveal],[data-fx]{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
 
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-bg"
         >
           Skip to content
         </a>

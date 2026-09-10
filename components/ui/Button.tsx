@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Same cva + asChild structure as the previous app's Button, retinted to the
- * purple palette. Rounded now (the old global `border-radius: 0` rule is gone).
+ * blue palette. Rounded now (the old global `border-radius: 0` rule is gone).
  */
 const buttonVariants = cva(
   [
@@ -17,13 +17,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        /* Solid purple with a glow that intensifies on hover */
+        /* Solid blue with a glow that intensifies on hover */
         primary: [
-          "bg-brand text-white shadow-[0_8px_30px_-8px_rgba(155,50,250,0.7)]",
-          "hover:bg-brand-bright hover:shadow-[0_10px_40px_-6px_rgba(155,50,250,0.9)]",
+          "bg-brand text-bg shadow-[0_8px_30px_-8px_rgba(91,140,255,0.7)]",
+          "hover:bg-brand-bright hover:shadow-[0_10px_40px_-6px_rgba(91,140,255,0.9)]",
           "active:scale-[0.97]",
         ],
-        /* Hairline outline that warms to purple */
+        /* Hairline outline that warms to blue */
         secondary: [
           "border border-border-strong bg-transparent text-fg",
           "hover:border-brand hover:bg-brand/10 hover:text-white",

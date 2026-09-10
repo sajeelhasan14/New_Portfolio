@@ -1,39 +1,77 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Design tokens
-   Base + structure: huzairahmedkhan.vercel.app (#0A0A0A dark,
-   one high-chroma accent). Accent hue: prystech.co --theme.
+   Design tokens — ported from design/Portfolio.dc.html
+   Two grounds, not one: a near-black stage (#08090B) and a warm
+   cream slab (#F1EEE8) that the About/Services block sits on.
+   One accent (#5B8CFF) carries every highlight.
    ============================================================ */
 @theme {
-  /* Surfaces — each step is faintly purple-tinted, not neutral grey */
-  --color-bg: #0a0a0a;
-  --color-surface: #121014;
-  --color-surface-2: #17141c;
-  --color-border: #241f2e;
-  --color-border-strong: #3a2f4d;
+  /* Dark ground */
+  --color-bg: #08090b;
+  --color-surface: #0e1013;
+  --color-surface-2: #111417;
+  --color-border: #1f2124;
+  --color-border-strong: #363739;
 
-  /* The purple */
-  --color-brand: #9b32fa;
-  --color-brand-bright: #b45cff;
-  --color-brand-deep: #460f76;
-  --color-brand-ink: #2e1157;
+  /* The blue */
+  --color-brand: #5b8cff;
+  --color-brand-bright: #8fb0ff;
+  --color-brand-deep: #2e4fa8;
+  --color-brand-ink: #2e4fa8;
 
-  /* Text */
-  --color-fg: #edeaf2;
-  --color-muted: #a29cae;
-  --color-muted-2: #6e687a;
+  /* Text on the dark ground. `ink` is the raw paper colour — use it
+     with an opacity modifier (border-ink/10) for the hairlines the
+     design draws as rgba(237,239,240,0.1). */
+  --color-ink: #edeff0;
+  --color-fg: #edeff0;
+  --color-muted: #a7aeb4;
+  --color-muted-2: #8a9299;
+  --color-dim: #6c757c;
+
+  /* Cream slab */
+  --color-cream: #f1eee8;
+  --color-cream-ink: #0c0b0a;
+  --color-cream-muted: #55524c;
+  --color-cream-dim: #6b665c;
 
   /* Type */
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* Motion */
+  --animate-marquee: mq 26s linear infinite;
+  --animate-blink: blink 2.4s ease-in-out infinite;
   --animate-float: float 9s ease-in-out infinite;
   --animate-float-slow: float 14s ease-in-out infinite;
   --animate-cue: cue 1.8s ease-in-out infinite;
-  --animate-wipe: wipe 1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
   --animate-shimmer: shimmer 2.5s linear infinite;
+}
+
+/* Marquee pair — `mq` runs left, `mqr` runs right. Both assume the
+   track's children are duplicated once, so -50% lands on a seam. */
+@keyframes mq {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes mqr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.15;
+  }
 }
 
 @keyframes float {
@@ -58,16 +96,6 @@
   }
 }
 
-/* The clip-path wipe carried over from the old hero */
-@keyframes wipe {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
 @keyframes shimmer {
   from {
     background-position: 200% 0;
@@ -80,7 +108,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* offset anchor targets so the fixed navbar doesn't cover headings */
     scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
   }
@@ -94,21 +121,21 @@
     overflow-x: clip;
   }
 
+  /* The design sets headings at 500, not bold, with tight tracking. */
   h1,
   h2,
   h3,
   h4 {
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-weight: 500;
+    letter-spacing: -0.035em;
     text-wrap: balance;
   }
 
   ::selection {
     background-color: var(--color-brand);
-    color: #fff;
+    color: var(--color-bg);
   }
 
-  /* Purple focus ring, applied globally rather than per-component */
   :focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: 2px;
@@ -131,7 +158,21 @@
 }
 
 @layer components {
-  /* Section shell — one source of truth for rhythm and gutters */
+  /* Full-bleed gutter — the design's `clamp(20px,4vw,56px)` inline
+     padding, which every section shares. */
+  .gutter {
+    padding-inline: clamp(20px, 4vw, 56px);
+  }
+
+  /* Mono section label: (01) ABOUT */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.24em] text-brand uppercase;
+  }
+  .eyebrow-ink {
+    @apply text-brand-ink;
+  }
+
+  /* Section shell — still used by /projects and /projects/[slug] */
   .section {
     @apply relative w-full px-5 py-24 sm:px-8 md:py-32;
   }
@@ -142,34 +183,25 @@
     @apply mx-auto w-full max-w-4xl;
   }
 
-  /* Card: dark tinted surface, hairline border, purple on hover */
   .card {
     @apply relative rounded-2xl border border-border bg-surface transition-all duration-300;
   }
   .card-hover {
-    @apply hover:-translate-y-1 hover:border-brand/50 hover:bg-surface-2 hover:shadow-[0_0_0_1px_rgba(155,50,250,0.15),0_18px_50px_-20px_rgba(155,50,250,0.45)];
+    @apply hover:-translate-y-1 hover:border-brand/50 hover:bg-surface-2 hover:shadow-[0_0_0_1px_rgba(91,140,255,0.15),0_18px_50px_-20px_rgba(91,140,255,0.45)];
   }
 
-  /* Mono eyebrow label — the "> section" marker from the reference site */
-  .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-brand uppercase;
-  }
-
-  /* Text that fades into the brand purple */
   .text-gradient {
-    @apply bg-gradient-to-r from-brand-bright via-brand to-brand-bright bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-brand-bright via-brand to-brand-bright bg-clip-text text-transparent;
   }
 
-  /* Blurred radial glow behind hero / contact */
   .orb {
     @apply pointer-events-none absolute rounded-full blur-[100px] will-change-transform;
   }
 
-  /* Faint dot grid, replaces the old stock textures */
   .dot-grid {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(155, 50, 250, 0.12) 1px,
+      rgba(91, 140, 255, 0.12) 1px,
       transparent 0
     );
     background-size: 32px 32px;
@@ -177,27 +209,55 @@
 }
 
 @layer utilities {
-  /* Fades a decorative layer out at the edges so it never hard-stops */
   .mask-fade {
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
   }
   .mask-fade-x {
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 88%, transparent);
   }
 }
 
-/* Honour the OS setting: kill motion, keep everything visible */
+/* ============================================================
+   Scroll effects
+   ScrollFx drives [data-fx] elements from a rAF loop. Rise/zoom
+   start dimmed so they don't flash at full opacity on first paint;
+   the loop takes over on frame one. The <noscript> block in the
+   root layout reveals them when JS never arrives.
+   ============================================================ */
+[data-fx="rise"],
+[data-fx="zoom"] {
+  opacity: 0.08;
+}
+
+[data-fx="card"] {
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+
+  /* Nothing may stay hidden waiting for a scroll that won't animate. */
+  [data-fx] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* The statement section is 440vh of scroll runway for one zoom.
+     With motion off there is nothing to run: collapse it to a
+     single screen and let the text sit still. */
+  [data-statement] {
+    height: 100vh !important;
   }
 }

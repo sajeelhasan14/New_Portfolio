@@ -1,66 +1,42 @@
 import { EXPERIENCE } from "@/data/portfolio";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="section">
-      <div className="shell-narrow">
-        <SectionHeading
-          eyebrow="Experience"
-          title={
-            <>
-              Where I&apos;ve <span className="text-gradient">worked</span>
-            </>
-          }
-        />
+    <section
+      id="experience"
+      className="gutter border-t border-ink/8 py-[clamp(60px,7vw,120px)]"
+    >
+      <div className="mb-[clamp(32px,4vw,60px)] flex flex-wrap items-baseline justify-between gap-6">
+        <span className="eyebrow">(05) Experience</span>
+        <h2 className="m-0 text-[clamp(28px,4vw,58px)] leading-[1.05] font-medium tracking-[-0.035em]">
+          Where I&apos;ve worked
+        </h2>
+      </div>
 
-        <ol className="relative">
-          {/* Timeline rail */}
-          <span
-            aria-hidden
-            className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-brand via-brand/30 to-transparent"
-          />
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,270px),1fr))] gap-px overflow-hidden rounded-[20px] border border-ink/10 bg-ink/10">
+        {EXPERIENCE.map((role, i) => (
+          <div
+            key={role.id}
+            data-fx="zoom"
+            className="flex min-h-70 flex-col gap-4 bg-bg p-[clamp(26px,3vw,44px)] transition-colors duration-300 hover:bg-surface"
+          >
+            <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.18em] text-dim">
+              <span className="text-brand">{String(i + 1).padStart(2, "0")}</span>
+              <span>{role.duration.toUpperCase()}</span>
+            </div>
 
-          {EXPERIENCE.map((job, i) => (
-            <li key={job.id}>
-              <Reveal delay={i * 100} className="relative pb-14 pl-10 last:pb-0">
-                {/* Node */}
-                <span
-                  aria-hidden
-                  className={
-                    job.current
-                      ? "absolute top-1.5 left-0 size-4 rounded-full border-2 border-brand bg-bg shadow-[0_0_14px_3px_rgba(155,50,250,0.85)] after:absolute after:inset-1 after:rounded-full after:bg-brand"
-                      : "absolute top-1.5 left-0 size-4 rounded-full border-2 border-border-strong bg-bg"
-                  }
-                />
+            <h3 className="m-0 mt-auto text-[clamp(22px,2.4vw,32px)] leading-[1.08] font-medium tracking-[-0.03em]">
+              {role.position}
+            </h3>
+            <span className="font-mono text-[11px] tracking-[0.14em] text-brand">
+              {role.company}
+            </span>
 
-                <div className="mb-1 flex flex-wrap items-center gap-3">
-                  <h3 className="text-xl font-bold">{job.position}</h3>
-                  {job.current && (
-                    <span className="rounded-full border border-brand/40 bg-brand/15 px-2.5 py-0.5 font-mono text-[10px] tracking-wider text-brand-bright uppercase">
-                      Current
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm font-medium text-brand-bright">{job.company}</p>
-                <p className="mt-1 mb-4 font-mono text-xs text-muted-2">{job.duration}</p>
-
-                <p className="mb-5 leading-relaxed text-muted">{job.description}</p>
-
-                <ul className="space-y-2.5">
-                  {job.highlights.map((highlight) => (
-                    <li key={highlight} className="flex gap-3 text-sm text-muted">
-                      <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-brand" />
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
+            <p className="m-0 text-[15px] leading-[1.6] text-pretty text-muted-2">
+              {role.description}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

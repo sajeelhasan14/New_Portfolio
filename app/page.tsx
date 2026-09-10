@@ -1,9 +1,10 @@
+import { ScrollFx } from "@/components/fx/ScrollFx";
 import { Hero } from "@/components/sections/Hero";
-import { Stats } from "@/components/sections/Stats";
+import { Statement } from "@/components/sections/Statement";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
-import { Skills } from "@/components/sections/Skills";
-import { Projects } from "@/components/sections/Projects";
+import { Work } from "@/components/sections/Work";
+import { Stack } from "@/components/sections/Stack";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
 import { Contact } from "@/components/sections/Contact";
@@ -11,12 +12,15 @@ import { Contact } from "@/components/sections/Contact";
 export default function HomePage() {
   return (
     <>
+      {/* Drives every [data-fx] element below. Sections stay server-rendered. */}
+      <ScrollFx />
+
       <Hero />
-      <Stats />
+      <Statement />
       <About />
       <Services />
-      <Skills />
-      <Projects />
+      <Work />
+      <Stack />
       <Experience />
       <Education />
       <Contact />

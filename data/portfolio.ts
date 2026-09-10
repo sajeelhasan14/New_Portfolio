@@ -29,12 +29,10 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const NAV_LINKS = [
+  { label: "Work", href: "/#work" },
   { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Stack", href: "/#stack" },
   { label: "Experience", href: "/#experience" },
-  { label: "Education", href: "/#education" },
 ] as const;
 
 /* ------------------------------------------------------------------ */

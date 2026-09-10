@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root { --accent: #5B8CFF; --accent-ink: #2E4FA8; --accent-wash: rgba(91,140,255,0.12); --accent-line: rgba(91,140,255,0.34); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #08090B; color: #EDEFF0; font-family: "Space Grotesk", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #EDEFF0; }
+  ::selection { background: var(--accent); color: #08090B; }
+  @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes mqr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes blink { 50% { opacity: 0.15; } }
+</style>
+</helmet>
+
+<div style="position:relative; width:100%; background:#08090B; overflow-x:clip">
+
+  <header data-bar="1" style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:18px clamp(20px,4vw,56px); backdrop-filter:blur(14px); background:rgba(8,9,11,0.55); border-bottom:1px solid rgba(237,239,240,0.07)">
+    <a data-bar-ink="1" href="#top" style="display:flex; align-items:center; gap:10px; color:#EDEFF0">
+      <span style="width:10px; height:10px; border-radius:50%; background:var(--accent); display:inline-block; animation:blink 2.4s ease-in-out infinite"></span>
+      <span style="font-size:15px; font-weight:600; letter-spacing:0.14em">YOUR NAME</span>
+    </a>
+    <nav style="display:flex; align-items:center; gap:clamp(14px,2.4vw,34px); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em">
+      <a data-bar-nav="1" href="#work" style="color:#8A9299">WORK</a>
+      <a data-bar-nav="1" href="#about" style="color:#8A9299">ABOUT</a>
+      <a data-bar-nav="1" href="#stack" style="color:#8A9299">STACK</a>
+      <a data-bar-nav="1" href="#process" style="color:#8A9299">PROCESS</a>
+      <a href="#contact" style="display:inline-flex; align-items:center; gap:8px; color:#08090B; background:var(--accent); padding:9px 16px; border-radius:100px; letter-spacing:0.14em; font-weight:500" style-hover="background:#EDEFF0">LET'S TALK</a>
+    </nav>
+  </header>
+
+  <section id="top" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:140px clamp(20px,4vw,56px) 48px">
+    <div style="position:absolute; inset:0; background:radial-gradient(60% 50% at 70% 10%, var(--accent-wash), transparent 70%); pointer-events:none"></div>
+    <div style="position:relative; display:flex; flex-direction:column; gap:40px">
+      <div style="display:flex; flex-wrap:wrap; gap:18px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.2em; color:#8A9299">
+        <span style="display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(237,239,240,0.14); border-radius:100px; padding:7px 14px">AVAILABLE FOR WORK — 2026</span>
+        <span>KARACHI, PK</span>
+        <span>/</span>
+        <span>REMOTE WORLDWIDE</span>
+      </div>
+      <h1 data-fx="rise" style="margin:0; font-size:clamp(52px,11.5vw,196px); line-height:0.86; letter-spacing:-0.045em; font-weight:500; text-wrap:balance">
+        I build the<br /><em style="font-style:normal; color:var(--accent)">systems</em> behind<br />the product
+      </h1>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:28px; align-items:end; border-top:1px solid rgba(237,239,240,0.1); padding-top:28px">
+        <p style="margin:0; max-width:42ch; color:#A7AEB4; font-size:clamp(15px,1.4vw,19px); line-height:1.55; text-wrap:pretty">
+          Placeholder intro — one or two lines on what you build, who for, and the outcome. Swap this for your own copy.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <a href="#work" style="display:inline-flex; align-items:center; gap:10px; padding:15px 26px; border-radius:100px; background:var(--accent); color:#08090B; font-size:14px; font-weight:600; letter-spacing:0.02em" style-hover="background:#EDEFF0">See selected work →</a>
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:10px; padding:15px 26px; border-radius:100px; border:1px solid rgba(237,239,240,0.2); color:#EDEFF0; font-size:14px; font-weight:500" style-hover="border-color:#EDEFF0">Start a project</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#8A9299">
+          <span>SCROLL TO EXPLORE</span>
+          <span style="color:var(--accent)">↓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Statement" style="position:relative; height:440vh; background:#F1EEE8">
+    <div data-fx="stage" style="position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:0 clamp(20px,4vw,56px); background:#08090B">
+      <div data-fx="grow" style="position:absolute; left:0; top:0; width:min(1300px,92vw); text-align:center">
+        <p data-fill="1" style="margin:0; font-size:clamp(26px,4.2vw,72px); line-height:1.12; letter-spacing:-0.035em; font-weight:500; color:#34383E; text-wrap:balance">
+          <span>I </span><span>write </span><span>the </span><span>part </span><span>users </span><span>never </span><span>see </span><span>— </span><span>APIs, </span><span>data </span><span>models </span><span>and </span><span>infrastructure </span><span>that </span><span>stay </span><span>fast </span><span>when </span><span>the </span><span>traffic </span><span>isn't </span><span>polite.</span>
+        </p>
+      </div>
+      <div data-fx="ui" style="position:absolute; left:clamp(20px,4vw,56px); right:clamp(20px,4vw,56px); bottom:34px; display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6C757C">
+        <span>SHIPPING SINCE 2020</span><span>BACKEND-FIRST FULL-STACK</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-screen-label="About" style="background:#F1EEE8; color:#0C0B0A; padding:clamp(80px,10vw,180px) clamp(20px,4vw,56px)">
+    <div data-fx="zoom" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(32px,5vw,90px); align-items:start">
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent-ink)">(01) ABOUT</span>
+        <h2 style="margin:0; font-size:clamp(30px,4.6vw,68px); line-height:1.02; letter-spacing:-0.035em; font-weight:500; text-wrap:balance">Full-stack, with the weight on the server side.</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:26px">
+        <p style="margin:0; color:#55524C; font-size:clamp(15px,1.35vw,18px); line-height:1.65; text-wrap:pretty">Placeholder paragraph — your background and the kind of systems you take on: services, data models, queues, the parts that decide whether a product holds up.</p>
+        <p style="margin:0; color:#55524C; font-size:clamp(15px,1.35vw,18px); line-height:1.65; text-wrap:pretty">Second paragraph — you ship the front end too, so nothing gets lost at the boundary. How you work, what a client can expect, and where you draw the line on scope.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1px; background:rgba(12,11,10,0.14); border:1px solid rgba(12,11,10,0.14); border-radius:16px; overflow:hidden; margin-top:8px">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:#F1EEE8; padding:22px 18px; display:flex; flex-direction:column; gap:6px">
+              <span style="font-size:clamp(26px,3vw,40px); line-height:1; letter-spacing:-0.03em; color:var(--accent-ink)">{{ s.value }}</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.18em; color:#6B665C">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Services" style="background:#F1EEE8; color:#0C0B0A; padding:clamp(60px,7vw,120px) clamp(20px,4vw,56px); border-top:1px solid rgba(12,11,10,0.12)">
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:baseline; justify-content:space-between; margin-bottom:clamp(32px,4vw,64px)">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent-ink)">(02) SERVICES</span>
+      <h2 style="margin:0; font-size:clamp(28px,4vw,58px); line-height:1.05; letter-spacing:-0.035em; font-weight:500; max-width:16ch">What I actually do</h2>
+    </div>
+    <div style="display:flex; flex-direction:column">
+      <sc-for list="{{ services }}" as="sv" hint-placeholder-count="4">
+        <div data-fx="rise" style="display:grid; grid-template-columns:minmax(0,68px) minmax(0,1.1fr) minmax(0,1.4fr); gap:clamp(16px,3vw,48px); align-items:start; padding:clamp(22px,3vw,38px) 0; border-top:1px solid rgba(12,11,10,0.12)" style-hover="background:linear-gradient(90deg, var(--accent-wash), transparent 62%)">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6B665C">{{ sv.num }}</span>
+          <h3 style="margin:0; font-size:clamp(20px,2.4vw,34px); line-height:1.1; letter-spacing:-0.025em; font-weight:500">{{ sv.title }}</h3>
+          <p style="margin:0; color:#55524C; font-size:15px; line-height:1.6; max-width:52ch; text-wrap:pretty">{{ sv.body }}</p>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid rgba(12,11,10,0.12)"></div>
+    </div>
+  </section>
+
+  <section id="work" data-screen-label="Selected work" style="position:relative; background:#08090B; border-radius:clamp(28px,4vw,56px) clamp(28px,4vw,56px) 0 0; margin-top:-1px; padding:clamp(60px,7vw,120px) clamp(20px,4vw,56px) 0">
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:baseline; justify-content:space-between; margin-bottom:clamp(28px,3vw,52px)">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent)">(03) SELECTED WORK</span>
+      <h2 style="margin:0; font-size:clamp(28px,4vw,58px); line-height:1.05; letter-spacing:-0.035em; font-weight:500">Featured projects</h2>
+      <a href="#contact" style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; border-bottom:1px solid var(--accent-line); padding-bottom:4px">BROWSE ALL (08)</a>
+    </div>
+    <div style="position:relative">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+        <article data-fx="card" style="position:sticky; top:110px; margin-bottom:36px; border-radius:26px; border:1px solid rgba(237,239,240,0.1); background:#0E1013; overflow:hidden; will-change:transform">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))">
+            <div style="position:relative; min-height:clamp(240px,34vw,440px); background:#111417; overflow:hidden">
+              <div style="position:absolute; inset:0; background:repeating-linear-gradient(135deg, rgba(237,239,240,0.055) 0 2px, transparent 2px 13px)"></div>
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.22em; color:#6C757C">{{ p.shot }}</span>
+              </div>
+            </div>
+            <div style="padding:clamp(26px,3.2vw,52px); display:flex; flex-direction:column; gap:22px; justify-content:center">
+              <div style="display:flex; justify-content:space-between; gap:16px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6C757C">
+                <span>{{ p.num }}</span><span>{{ p.year }}</span>
+              </div>
+              <h3 style="margin:0; font-size:clamp(28px,3.6vw,52px); line-height:1; letter-spacing:-0.035em; font-weight:500">{{ p.name }}</h3>
+              <p style="margin:0; color:#A7AEB4; font-size:16px; line-height:1.6; max-width:46ch; text-wrap:pretty">{{ p.body }}</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px">
+                <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="4">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; color:#A7AEB4; border:1px solid rgba(237,239,240,0.16); border-radius:100px; padding:7px 13px">{{ t }}</span>
+                </sc-for>
+              </div>
+              <div style="display:flex; gap:22px; align-items:center; padding-top:6px">
+                <a href="#work" style="display:inline-flex; align-items:center; gap:9px; font-size:14px; font-weight:600">Live demo ↗</a>
+                <a href="#work" style="display:inline-flex; align-items:center; gap:9px; font-size:14px; color:#8A9299" style-hover="color:#EDEFF0">Case study</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="stack" data-screen-label="Tech stack" style="padding:clamp(80px,9vw,160px) 0; overflow:hidden">
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:baseline; justify-content:space-between; padding:0 clamp(20px,4vw,56px); margin-bottom:clamp(32px,4vw,60px)">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent)">(04) TECHNOLOGIES</span>
+      <h2 style="margin:0; font-size:clamp(28px,4vw,58px); line-height:1.05; letter-spacing:-0.035em; font-weight:500">Tech stack</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px">
+      <sc-for list="{{ stackRows }}" as="row" hint-placeholder-count="5">
+        <div style="display:grid; grid-template-columns:minmax(0,220px) minmax(0,1fr); gap:clamp(14px,2vw,32px); align-items:center; padding:0 0 0 clamp(20px,4vw,56px)">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#8A9299">{{ row.label }}</span>
+          <div style="position:relative; overflow:hidden; mask-image:linear-gradient(90deg, transparent, #000 6%, #000 88%, transparent)">
+            <div style="display:flex; width:max-content; gap:12px; animation:{{ row.anim }}" style-hover="animation-play-state:paused">
+              <sc-for list="{{ row.items }}" as="it" hint-placeholder-count="12">
+                <span style="font-size:clamp(15px,1.6vw,22px); letter-spacing:-0.01em; color:var(--accent); border:1px solid var(--accent-line); padding:10px 20px; white-space:nowrap">{{ it }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="process" data-screen-label="Process" style="padding:clamp(60px,7vw,120px) clamp(20px,4vw,56px); border-top:1px solid rgba(237,239,240,0.08)">
+    <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:baseline; justify-content:space-between; margin-bottom:clamp(32px,4vw,60px)">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent)">(05) PROCESS</span>
+      <h2 style="margin:0; font-size:clamp(28px,4vw,58px); line-height:1.05; letter-spacing:-0.035em; font-weight:500">How I work</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:1px; background:rgba(237,239,240,0.1); border:1px solid rgba(237,239,240,0.1); border-radius:20px; overflow:hidden">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+        <div data-fx="zoom" style="background:#08090B; padding:clamp(26px,3vw,44px); display:flex; flex-direction:column; gap:16px; min-height:280px" style-hover="background:#0E1013">
+          <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#6C757C">
+            <span style="color:var(--accent)">{{ st.num }}</span><span>{{ st.when }}</span>
+          </div>
+          <h3 style="margin:auto 0 0; font-size:clamp(22px,2.4vw,32px); line-height:1.08; letter-spacing:-0.03em; font-weight:500">{{ st.title }}</h3>
+          <p style="margin:0; color:#8A9299; font-size:15px; line-height:1.6; text-wrap:pretty">{{ st.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ showTestimonial }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Testimonial" style="padding:clamp(60px,8vw,140px) clamp(20px,4vw,56px)">
+      <div data-fx="zoom" style="max-width:1100px; margin:0 auto; display:flex; flex-direction:column; gap:32px; align-items:center; text-align:center">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent)">(06) TESTIMONIAL</span>
+        <blockquote style="margin:0; font-size:clamp(22px,3.4vw,46px); line-height:1.22; letter-spacing:-0.03em; font-weight:400; text-wrap:balance">“Placeholder quote from a client — one that names a result, not just praise. Keep it to three lines.”</blockquote>
+        <div style="display:flex; align-items:center; gap:14px">
+          <span style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(237,239,240,0.2); display:inline-flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:12px; color:#8A9299">CN</span>
+          <div style="display:flex; flex-direction:column; align-items:flex-start">
+            <span style="font-size:15px">Client Name</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; color:#6C757C">ROLE, COMPANY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="contact" data-screen-label="Contact" style="padding:clamp(60px,7vw,110px) clamp(20px,4vw,56px) 0">
+    <div data-fx="zoom" style="border-radius:28px; border:1px solid var(--accent-line); background:linear-gradient(160deg, var(--accent-wash), rgba(14,16,19,0.6)); padding:clamp(32px,5vw,88px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(28px,4vw,64px); align-items:end">
+      <div style="display:flex; flex-direction:column; gap:20px">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.24em; color:var(--accent)">(07) CONTACT</span>
+        <h2 style="margin:0; font-size:clamp(32px,5.4vw,84px); line-height:0.96; letter-spacing:-0.04em; font-weight:500; text-wrap:balance">Have a project in mind?</h2>
+        <p style="margin:0; color:#A7AEB4; font-size:17px; line-height:1.6; max-width:44ch; text-wrap:pretty">Send the brief. You'll get a reply within a day with an approach, a timeline, and an honest read on scope.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:18px">
+        <a href="mailto:hello@example.com" style="font-size:clamp(20px,2.6vw,36px); letter-spacing:-0.03em; border-bottom:1px solid var(--accent-line); padding-bottom:10px">hello@example.com</a>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em">
+          <a href="#contact" style="border:1px solid rgba(237,239,240,0.18); border-radius:100px; padding:10px 18px; color:#EDEFF0" style-hover="border-color:var(--accent)">LINKEDIN</a>
+          <a href="#contact" style="border:1px solid rgba(237,239,240,0.18); border-radius:100px; padding:10px 18px; color:#EDEFF0" style-hover="border-color:var(--accent)">GITHUB</a>
+          <a href="#contact" style="border:1px solid rgba(237,239,240,0.18); border-radius:100px; padding:10px 18px; color:#EDEFF0" style-hover="border-color:var(--accent)">UPWORK</a>
+          <a href="#contact" style="border:1px solid rgba(237,239,240,0.18); border-radius:100px; padding:10px 18px; color:#EDEFF0" style-hover="border-color:var(--accent)">WHATSAPP</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="overflow:hidden; padding:clamp(48px,7vw,110px) 0 0">
+    <div style="display:flex; width:max-content; gap:40px; animation:mq 26s linear infinite">
+      <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="8">
+        <span style="font-size:clamp(38px,7vw,110px); line-height:1; letter-spacing:-0.04em; color:#EDEFF0; white-space:nowrap">{{ m }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <footer style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:center; padding:clamp(40px,5vw,72px) clamp(20px,4vw,56px) 40px; margin-top:clamp(40px,5vw,80px); border-top:1px solid rgba(237,239,240,0.08); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.16em; color:#6C757C">
+    <span>© 2026 YOUR NAME</span>
+    <span>DESIGNED &amp; BUILT IN KARACHI</span>
+    <a href="#top" style="color:#8A9299">BACK TO TOP ↑</a>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#5B8CFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#5B8CFF&quot;,&quot;#4DFFB8&quot;,&quot;#3ED9DC&quot;,&quot;#7DF9FF&quot;,&quot;#C6F24E&quot;,&quot;#B8FF2E&quot;,&quot;#FFB84D&quot;,&quot;#FF6B3D&quot;,&quot;#FF4D8D&quot;,&quot;#8B7CFF&quot;],&quot;section&quot;:&quot;Theme&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;full&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;medium&quot;,&quot;light&quot;],&quot;tsType&quot;:&quot;'full'|'medium'|'light'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;showTestimonial&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  paintAccent() {
+    let hex = (this.props.accentColor || '#5B8CFF').replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    const r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);
+    const max = Math.max(r, g, b) / 255, min = Math.min(r, g, b) / 255;
+    const l = (max + min) / 2, d = max - min;
+    const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+    let h = 0;
+    if (d !== 0) {
+      const rn = r / 255, gn = g / 255, bn = b / 255;
+      if (max === rn) h = ((gn - bn) / d) % 6;
+      else if (max === gn) h = (bn - rn) / d + 2;
+      else h = (rn - gn) / d + 4;
+      h *= 60;
+      if (h < 0) h += 360;
+    }
+    const root = document.documentElement.style;
+    root.setProperty('--accent', '#' + hex);
+    root.setProperty('--accent-ink', 'hsl(' + h.toFixed(0) + ' ' + Math.round(Math.max(0.45, s) * 100) + '% 38%)');
+    root.setProperty('--accent-wash', 'rgba(' + r + ',' + g + ',' + b + ',0.13)');
+    root.setProperty('--accent-line', 'rgba(' + r + ',' + g + ',' + b + ',0.34)');
+  }
+
+  componentDidMount() {
+    this.paintAccent();
+    window.__pfxAmp = { full: 1, medium: 0.6, light: 0.3 }[this.props.motion || 'full'] ?? 1;
+    if (window.__pfxLoop) cancelAnimationFrame(window.__pfxLoop);
+    if (window.__pfxWatch) clearInterval(window.__pfxWatch);
+    const vh = () => window.innerHeight;
+    let seen = 0;
+
+    const paintBar = () => {
+      const bar = document.querySelector('[data-bar]');
+      if (!bar) return;
+      const probeY = bar.getBoundingClientRect().bottom + 8;
+      let light = false;
+      for (const s of document.querySelectorAll('section, [data-fx="stage"]')) {
+        const r = s.getBoundingClientRect();
+        if (r.top <= probeY && r.bottom > probeY) {
+          const bg = getComputedStyle(s).backgroundColor.match(/[\d.]+/g);
+          if (bg && +bg[3] !== 0) light = (+bg[0] * 299 + +bg[1] * 587 + +bg[2] * 114) / 1000 > 140;
+        }
+      }
+      if (bar._light === light) return;
+      bar._light = light;
+      bar.style.background = light ? 'rgba(241,238,232,0.72)' : 'rgba(8,9,11,0.55)';
+      bar.style.borderBottomColor = light ? 'rgba(12,11,10,0.14)' : 'rgba(237,239,240,0.07)';
+      const ink = document.querySelector('[data-bar-ink]');
+      if (ink) ink.style.color = light ? '#0C0B0A' : '#EDEFF0';
+      for (const a of document.querySelectorAll('[data-bar-nav]')) a.style.color = light ? '#4A473F' : '#8A9299';
+    };
+
+    const apply = () => {
+      const amp = window.__pfxAmp ?? 1;
+      paintBar();
+      const els = document.querySelectorAll('[data-fx]');
+      if (els.length !== seen) {
+        seen = els.length;
+        for (const el of els) if (el.dataset.fx !== 'grow' && el.dataset.fx !== 'card') el.style.transition = 'opacity .12s linear';
+      }
+      for (const el of els) {
+        const fx = el.dataset.fx;
+        const r = el.getBoundingClientRect();
+        if (fx === 'grow' || fx === 'stage' || fx === 'ui') {
+          const host = el.closest('section');
+          const hr = host.getBoundingClientRect();
+          const p = Math.min(1, Math.max(0, -hr.top / (hr.height - vh())));
+          const clamp01 = (v) => Math.min(1, Math.max(0, v));
+          const fillP = clamp01((p - 0.04) / 0.42);
+          const zoomP = clamp01((p - 0.54) / 0.46);
+          const lightP = clamp01((zoomP - 0.62) / 0.33);
+
+          if (fx === 'stage') {
+            const mix = (a, b) => Math.round(a + (b - a) * lightP);
+            el.style.backgroundColor = 'rgb(' + mix(8, 241) + ',' + mix(9, 238) + ',' + mix(11, 232) + ')';
+          } else if (fx === 'ui') {
+            el.style.opacity = (1 - clamp01(zoomP / 0.25)).toFixed(3);
+          } else {
+            const words = el.querySelectorAll('[data-fill] span');
+            if (words.length) {
+              let hex = (getComputedStyle(document.documentElement).getPropertyValue('--accent') || '').trim().replace('#', '');
+              if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+              const ar = parseInt(hex.slice(0, 2), 16), ag = parseInt(hex.slice(2, 4), 16), ab = parseInt(hex.slice(4, 6), 16);
+              const acc = isNaN(ar) ? [77, 255, 184] : [ar, ag, ab];
+              const toCream = clamp01((zoomP - 0.10) / 0.35);
+              const lit = fillP * (words.length + 2) - 1;
+              for (let i = 0; i < words.length; i++) {
+                const t = clamp01(lit - i);
+                const e = t * t * (3 - 2 * t);
+                const ch = (dim, target) => {
+                  const on = acc[dim] + (target - acc[dim]) * toCream;
+                  return Math.round(52 + (on - 52) * e);
+                };
+                words[i].style.color = 'rgb(' + ch(0, 241) + ',' + ch(1, 238) + ',' + ch(2, 232) + ')';
+              }
+            }
+            const para = el.firstElementChild;
+            const vw = window.innerWidth;
+            if (el._vw !== vw) {
+              el._vw = vw;
+              el._base = Math.min(72, Math.max(26, 0.042 * vw));
+              el._w = Math.min(1300, vw * 0.92);
+            }
+            const s = 1 + Math.pow(zoomP, 2.4) * 40 * amp;
+            const w = Math.round(el._w * s);
+            para.style.fontSize = Math.round(el._base * s) + 'px';
+            el.style.width = w + 'px';
+            el.style.left = Math.round((vw - w) / 2) + 'px';
+            el.style.top = Math.round((vh() - el.offsetHeight) / 2) + 'px';
+            el.style.opacity = '1';
+          }
+        } else if (fx === 'card') {
+          const p = Math.min(1, Math.max(0, (110 - r.top) / vh()));
+          const s = 1 - 0.06 * p * amp;
+          el.style.transform = 'scale(' + s.toFixed(4) + ')';
+          el.style.opacity = (1 - 0.35 * p * amp).toFixed(3);
+        } else {
+          const p = Math.min(1, Math.max(0, (vh() * 0.94 - r.top) / (vh() * 0.5)));
+          const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+          if (fx === 'zoom') {
+            el.style.transform = 'scale(' + (1 - 0.09 * amp * (1 - e)).toFixed(4) + ') translateY(' + (34 * amp * (1 - e)).toFixed(1) + 'px)';
+            el.style.opacity = (0.15 + 0.85 * e).toFixed(3);
+          } else if (fx === 'rise') {
+            el.style.transform = 'translateY(' + (56 * amp * (1 - e)).toFixed(1) + 'px)';
+            el.style.opacity = (0.1 + 0.9 * e).toFixed(3);
+          } else if (fx === 'drift') {
+            el.style.transform = 'translateY(' + (26 * amp * (1 - e)).toFixed(1) + 'px)';
+          }
+        }
+      }
+    };
+
+    let lastY = null, lastH = null, lastN = null, lastA = null;
+    const tick = () => {
+      const sc = document.scrollingElement || document.documentElement;
+      const y = sc.scrollTop || window.scrollY || 0;
+      const h = window.innerHeight;
+      const n = document.querySelectorAll('[data-fx]').length;
+      const a = window.__pfxAmp;
+      window.__pfxBeat = performance.now();
+      if (n && (y !== lastY || h !== lastH || n !== lastN || a !== lastA)) {
+        lastY = y; lastH = h; lastN = n; lastA = a;
+        apply();
+      }
+      window.__pfxLoop = requestAnimationFrame(tick);
+    };
+    window.__pfxLoop = requestAnimationFrame(tick);
+    window.__pfxWatch = setInterval(() => {
+      if (!document.querySelector('[data-fx]')) return;
+      if (performance.now() - (window.__pfxBeat || 0) > 600) {
+        if (window.__pfxLoop) cancelAnimationFrame(window.__pfxLoop);
+        lastY = null; lastH = null; lastN = null; lastA = null;
+        window.__pfxLoop = requestAnimationFrame(tick);
+      }
+    }, 700);
+  }
+
+  componentWillUnmount() {}
+
+  componentDidUpdate() {
+    this.paintAccent();
+    window.__pfxAmp = { full: 1, medium: 0.6, light: 0.3 }[this.props.motion || 'full'] ?? 1;
+  }
+
+  renderVals() {
+    return {
+      showTestimonial: this.props.showTestimonial ?? true,
+      stats: [
+        { value: '2+', label: 'YEARS' },
+        { value: '10+', label: 'PROJECTS' },
+        { value: '5+', label: 'CLIENTS' },
+        { value: '100%', label: 'REMOTE' }
+      ],
+      services: [
+        { num: '001', title: 'APIs & backend services', body: 'Placeholder — REST and GraphQL services, auth, background jobs and integrations, built to be boring in production.' },
+        { num: '002', title: 'Databases & data modeling', body: 'Placeholder — schema design, migrations, query tuning and caching for workloads that outgrew their first schema.' },
+        { num: '003', title: 'Infrastructure & DevOps', body: 'Placeholder — containers, CI/CD, observability and cost-aware cloud setups you can hand to a team.' },
+        { num: '004', title: 'Full-stack product builds', body: 'Placeholder — the whole thing end to end when you need one person to own the stack, front end included.' }
+      ],
+      projects: [
+        { num: '01', year: '2026', name: 'Project One', shot: 'PROJECT SHOT — 16:9', body: 'Placeholder blurb — the system you built, the load it handles, and the number that proves it.', tags: ['Node', 'PostgreSQL', 'Redis', 'AWS'] },
+        { num: '02', year: '2025', name: 'Project Two', shot: 'PROJECT SHOT — 16:9', body: 'Placeholder blurb — the system you built, the load it handles, and the number that proves it.', tags: ['Python', 'FastAPI', 'Celery', 'Stripe'] },
+        { num: '03', year: '2025', name: 'Project Three', shot: 'PROJECT SHOT — 16:9', body: 'Placeholder blurb — the system you built, the load it handles, and the number that proves it.', tags: ['Go', 'gRPC', 'Kafka', 'Kubernetes'] },
+        { num: '04', year: '2024', name: 'Project Four', shot: 'PROJECT SHOT — 16:9', body: 'Placeholder blurb — the system you built, the load it handles, and the number that proves it.', tags: ['Next.js', 'tRPC', 'Prisma', 'Vercel'] }
+      ],
+      stackRows: [
+        { label: 'BACKEND', anim: 'mq 34s linear infinite', items: ['Node.js', 'Python', 'Go', 'FastAPI', 'NestJS', 'Express', 'tRPC', 'GraphQL', 'Node.js', 'Python', 'Go', 'FastAPI', 'NestJS', 'Express', 'tRPC', 'GraphQL'] },
+        { label: 'DATA & STORAGE', anim: 'mqr 40s linear infinite', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'pgvector', 'S3', 'ClickHouse', 'PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'pgvector', 'S3', 'ClickHouse'] },
+        { label: 'INFRA & DEVOPS', anim: 'mq 30s linear infinite', items: ['Docker', 'Kubernetes', 'AWS', 'Terraform', 'GitHub Actions', 'Grafana', 'Sentry', 'Docker', 'Kubernetes', 'AWS', 'Terraform', 'GitHub Actions', 'Grafana', 'Sentry'] },
+        { label: 'ARCHITECTURE', anim: 'mqr 36s linear infinite', items: ['Event-driven', 'Queues & workers', 'Caching', 'Auth & RBAC', 'Rate limiting', 'Testing', 'Event-driven', 'Queues & workers', 'Caching', 'Auth & RBAC', 'Rate limiting', 'Testing'] },
+        { label: 'FRONTEND', anim: 'mq 32s linear infinite', items: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'React Query', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'React Query'] }
+      ],
+      steps: [
+        { num: '01', when: 'WEEK 1', title: 'Discovery & direction', body: 'Placeholder — requirements, constraints, and an agreed direction before anything gets built.' },
+        { num: '02', when: 'WEEKS 2–3', title: 'Design & build', body: 'Placeholder — rapid iteration with weekly demos, so you see progress instead of waiting for a reveal.' },
+        { num: '03', when: 'ONGOING', title: 'Ship & improve', body: 'Placeholder — launch support, monitoring, and steady improvements after go-live.' }
+      ],
+      marquee: ['Let’s work together', '—', 'Let’s work together', '—', 'Let’s work together', '—', 'Let’s work together', '—']
+    };
+  }
+}
+</script>
+</body>
+</html>

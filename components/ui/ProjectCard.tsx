@@ -16,7 +16,7 @@ export function ProjectThumb({ project, className }: { project: Project; classNa
     <div
       className={cn(
         "relative flex items-center justify-center overflow-hidden",
-        "bg-[radial-gradient(ellipse_at_50%_0%,rgba(155,50,250,0.35),transparent_65%)]",
+        "bg-[radial-gradient(ellipse_at_50%_0%,rgba(91,140,255,0.35),transparent_65%)]",
         "bg-surface-2",
         className,
       )}

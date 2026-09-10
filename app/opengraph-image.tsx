@@ -16,11 +16,11 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#0A0A0A",
+          background: "#08090B",
           position: "relative",
         }}
       >
-        {/* Purple glow, matching the site's hero */}
+        {/* Accent glow, matching the site's hero */}
         <div
           style={{
             position: "absolute",
@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             width: 640,
             height: 640,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(155,50,250,0.55) 0%, rgba(10,10,10,0) 70%)",
+            background: "radial-gradient(circle, rgba(91,140,255,0.55) 0%, rgba(8,9,11,0) 70%)",
             display: "flex",
           }}
         />
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
             width: 620,
             height: 620,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(70,15,118,0.7) 0%, rgba(10,10,10,0) 70%)",
+            background: "radial-gradient(circle, rgba(46,79,168,0.7) 0%, rgba(8,9,11,0) 70%)",
             display: "flex",
           }}
         />
@@ -52,7 +52,7 @@ export default function OpengraphImage() {
               display: "flex",
               alignItems: "center",
               gap: 12,
-              color: "#B45CFF",
+              color: "#8FB0FF",
               fontSize: 24,
               letterSpacing: 4,
               textTransform: "uppercase",
@@ -62,7 +62,7 @@ export default function OpengraphImage() {
             &gt; {PROFILE.availability}
           </div>
 
-          <div style={{ display: "flex", color: "#A29CAE", fontSize: 56, lineHeight: 1.1 }}>
+          <div style={{ display: "flex", color: "#A7AEB4", fontSize: 56, lineHeight: 1.1 }}>
             Mohammad
           </div>
           <div
@@ -72,7 +72,7 @@ export default function OpengraphImage() {
               fontWeight: 700,
               lineHeight: 1.05,
               letterSpacing: -3,
-              background: "linear-gradient(90deg, #B45CFF 0%, #9B32FA 100%)",
+              background: "linear-gradient(90deg, #8FB0FF 0%, #5B8CFF 100%)",
               backgroundClip: "text",
               color: "transparent",
             }}
@@ -80,7 +80,7 @@ export default function OpengraphImage() {
             Sajeel Hasan
           </div>
 
-          <div style={{ display: "flex", color: "#EDEAF2", fontSize: 32, marginTop: 36 }}>
+          <div style={{ display: "flex", color: "#EDEFF0", fontSize: 32, marginTop: 36 }}>
             {PROFILE.tagline}
           </div>
 
@@ -90,12 +90,12 @@ export default function OpengraphImage() {
               alignItems: "center",
               gap: 20,
               marginTop: 48,
-              color: "#6E687A",
+              color: "#6C757C",
               fontSize: 24,
             }}
           >
             <span>{PROFILE.location}</span>
-            <span style={{ color: "#9B32FA" }}>•</span>
+            <span style={{ color: "#5B8CFF" }}>•</span>
             <span>React · Next.js · Node · Flutter</span>
           </div>
         </div>
