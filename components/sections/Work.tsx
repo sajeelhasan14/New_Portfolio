@@ -36,7 +36,7 @@ export function Work() {
             className="sticky top-[110px] mb-9 overflow-hidden rounded-[26px] border border-ink/10 bg-surface"
           >
             <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))]">
-              <div className="relative min-h-[clamp(240px,34vw,440px)] overflow-hidden bg-surface-2">
+              <div className="relative aspect-video overflow-hidden bg-surface-2">
                 <div
                   aria-hidden
                   className="absolute inset-0 bg-[repeating-linear-gradient(135deg,rgba(237,239,240,0.055)_0_2px,transparent_2px_13px)]"
@@ -47,8 +47,10 @@ export function Work() {
                     alt={`${project.title} screenshot`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    // Portrait phone captures — contain, so nothing is cropped.
-                    className="object-contain p-6"
+                    // Fills the frame edge to edge, no letterboxing. The
+                    // stored sheets are wider than 16:9, so this trims their
+                    // left and right edges — export shots at 16:9 to avoid it.
+                    className="object-cover"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -77,7 +79,7 @@ export function Work() {
                   {project.technologies.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full border border-ink/16 px-3.5 py-[7px] font-mono text-[10px] tracking-[0.14em] text-muted"
+                      className="rounded-full border border-ink/16 px-3.5 py-1.75 font-mono text-[10px] tracking-[0.14em] text-muted"
                     >
                       {tech}
                     </span>

@@ -1,25 +1,25 @@
 /**
  * Single source of truth for portfolio content.
- * Ported from the previous Vite app's src/data/constants.js, with three additions:
- *   - `slug`, `overview` and `highlights` on projects, to drive /projects/[slug]
- *   - `screenshot` split out from `liveUrl` (the old `demo` field pointed at .jpeg
- *     files for the Flutter apps, so "Demo" links just opened an image)
- *   - STATS and SERVICES, both derived from the data already here
+ *
+ * Last synced against the CV (Feb 2026 revision), which added the Marktecs
+ * full-stack role, the Marfah Technologies internship, and MAIL-AI. Projects
+ * the CV folds into "Flutter Mini-Apps" are kept as individual entries here
+ * because each one has its own case-study page under /projects/[slug].
  */
 
 export const PROFILE = {
   name: "Mohammad Sajeel Hasan",
   shortName: "Sajeel Hasan",
   initials: "SH",
-  title: "Software Engineering Student & Aspiring Full-Stack Developer",
-  tagline: "Building Real-World Apps While Growing Into a Full-Stack Engineer",
+  title: "Software Engineering Student & Full-Stack Developer",
+  tagline: "Building scalable web apps, backend systems and AI-powered products",
   location: "Karachi, Pakistan",
-  bio: "I'm a Software Engineering student passionate about turning ideas into real applications. My journey started with Flutter development and is now expanding into full-stack web development, where I'm learning React for building modern user interfaces and Node.js, Express, and PostgreSQL for backend systems. I enjoy learning new technologies, building practical projects, and exploring AI to create smarter and more impactful software.",
+  bio: "I'm a Software Engineering student and full-stack developer with hands-on experience building scalable web applications, backend systems, APIs, databases and AI-powered products. Most of my work lives on the server side — route handlers, data models, auth and caching — but I ship the interface too, so nothing gets lost at the boundary.",
   bioSecondary:
-    "I'm passionate about building scalable applications with clean and maintainable code. When I'm not coding, I'm exploring new technologies, strengthening my problem-solving skills, and building projects in React and backend development to grow as a full-stack engineer.",
+    "At Marktecs I architected the frontend of a multi-tenant e-commerce CRM and the Backend-for-Frontend layer underneath it. Outside work I'm most interested in backend architecture, system design, and agentic AI — building software that stays reliable once it's in production and real traffic arrives.",
   email: "sajeel.hasan14@gmail.com",
   phone: "+92 333 2263110",
-  availability: "Open to internships & junior roles",
+  availability: "Open to full-stack & backend roles",
 } as const;
 
 export const SOCIAL_LINKS = [
@@ -45,9 +45,9 @@ export const STATS: {
   /** Render verbatim instead of counting up — a year shouldn't tick from zero. */
   raw?: boolean;
 }[] = [
-  { value: 5, label: "Projects Shipped" },
-  { value: 2, label: "Internships" },
-  { value: 4, label: "Tech Stacks" },
+  { value: 6, label: "Projects Shipped" },
+  { value: 3, label: "Roles Held" },
+  { value: 5, label: "Tech Stacks" },
   { value: 2027, label: "Graduating", raw: true },
 ];
 
@@ -64,31 +64,31 @@ export const SERVICES: {
 }[] = [
   {
     icon: "web",
-    title: "Full-Stack Web",
+    title: "Full-stack web apps",
     description:
-      "Responsive interfaces in React and Next.js, wired to my own Node and Express services. I build the whole path — from the component on screen to the query that feeds it.",
-    tags: ["React", "Next.js", "Tailwind CSS", "Node.js"],
-  },
-  {
-    icon: "mobile",
-    title: "Mobile Apps",
-    description:
-      "Cross-platform Android and iOS apps in Flutter, where I started out. Multi-screen navigation, Provider state management, offline storage and Firebase auth.",
-    tags: ["Flutter", "Dart", "Firebase", "Provider"],
+      "Next.js and React front ends in TypeScript, wired to services I build myself. At Marktecs that meant a multi-tenant CRM of 60+ screens and 200+ components — App Router structure, org-scoped routing, and a component system the rest of the team builds on.",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   },
   {
     icon: "backend",
-    title: "Backend & APIs",
+    title: "APIs & backend services",
     description:
-      "REST APIs on Express with PostgreSQL behind them — schema design, auth flows, and integrating third-party APIs so the frontend has something solid to talk to.",
-    tags: ["Express.js", "PostgreSQL", "REST APIs", "Python"],
+      "REST APIs on Node and Express over PostgreSQL — schema design, auth flows, and Backend-for-Frontend layers that keep API keys server-side. Plus the unglamorous parts: caching, revalidation, and cutting redundant round-trips.",
+    tags: ["Node.js", "Express.js", "PostgreSQL", "REST APIs"],
   },
   {
     icon: "ai",
-    title: "AI & Automation",
+    title: "AI agents & RAG",
     description:
-      "Python assistants that answer real questions from real users. At CIME I built one that guided visitors around the facility and ran it on a robotic prototype.",
-    tags: ["Python", "Chatbots", "Agentic AI", "Automation"],
+      "Agentic systems on the OpenAI Agents SDK, where the model decides which tools to call rather than following a script. Semantic search over your own data with pgvector embeddings, and human-in-the-loop approval wherever an agent acts on your behalf.",
+    tags: ["OpenAI Agents SDK", "Gemini", "RAG", "pgvector"],
+  },
+  {
+    icon: "mobile",
+    title: "Mobile apps",
+    description:
+      "Cross-platform Android and iOS apps in Flutter, where I started out. Multi-screen navigation, Provider state management, REST integration through Dio, and Firebase for auth and storage.",
+    tags: ["Flutter", "Dart", "Firebase", "Provider"],
   },
 ];
 
@@ -98,28 +98,32 @@ export const SERVICES: {
 export const TECHNOLOGIES = [
   {
     category: "Frontend / Web",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    category: "Backend",
-    skills: ["Node.js", "Express.js", "Python", "PostgreSQL", "REST APIs"],
+    category: "Backend & Data",
+    skills: ["Node.js", "Express.js", "PostgreSQL", "REST APIs", "Supabase", "Python"],
   },
   {
-    category: "Mobile / Flutter",
-    skills: ["Flutter", "Dart", "Provider", "Firebase", "CarouselSlider", "SharedPreferences"],
+    category: "AI & Agents",
+    skills: ["OpenAI Agents SDK", "Gemini", "RAG", "pgvector", "Chatbots"],
   },
   {
-    category: "Tools & Others",
-    skills: ["VS Code", "Antigravity", "Figma", "Postman", "Git", "Terminal", "Vercel"],
+    category: "Mobile",
+    skills: ["Flutter", "Dart", "Firebase", "Provider", "Secure Storage"],
+  },
+  {
+    category: "Tools & Deploy",
+    skills: ["Git & GitHub", "Vercel", "Railway", "Postman", "VS Code", "Figma"],
   },
 ] as const;
 
 export const INTERESTS = [
-  "Mobile App Development",
+  "Backend Architecture",
+  "System Design",
+  "Agentic AI & RAG",
   "Full Stack Web Development",
-  "Backend Engineering",
-  "AI Automation & Agentic AI",
-  "Problem Solving",
+  "Mobile App Development",
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -143,19 +147,53 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug: "mail-ai",
+    title: "MAIL-AI",
+    summary:
+      "Agentic AI email assistant. A two-agent Writer and Reviewer pipeline on the OpenAI Agents SDK that decides its own tool calls, grounded in your past emails through semantic search.",
+    overview:
+      "MAIL-AI is a multi-user email assistant built on the OpenAI Agents SDK running on Gemini. The distinction that matters is that it is genuinely agentic rather than a chatbot wrapped around an inbox: a Writer agent and a Reviewer agent pass work between them, and the agent decides which tools to call on its own. Drafts are grounded in what you have actually written before — past emails are embedded with pgvector, so relevant prior conversations are retrieved by meaning rather than keyword. It reads and sends from each user's own Gmail account through OAuth, and nothing leaves the outbox without an explicit human approval step.",
+    highlights: [
+      "Two-agent Writer and Reviewer pipeline on the OpenAI Agents SDK, running on Gemini, with autonomous tool-use",
+      "RAG semantic search over past emails using pgvector embeddings, grounding drafts in relevant prior threads",
+      "Google OAuth via Supabase and the Gmail API, with per-user token management and least-privilege scopes",
+      "Direct PostgreSQL data layer (node-postgres) with per-user scoping and human-in-the-loop send approval",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI Agents SDK",
+      "Gemini",
+      "Supabase",
+      "PostgreSQL",
+      "pgvector",
+    ],
+    year: "2026",
+    featured: true,
+  },
+  {
     slug: "georate",
     title: "GeoRate",
     summary:
-      "Location-based platform with real-time updates and interactive maps. Users can discover local businesses, share reviews, and explore nearby places.",
+      "Full-stack PERN application for persisting and exploring location-based reviews, built around a real-time interactive map.",
     overview:
-      "GeoRate is my first full-stack web project, and the one that pushed me from writing frontends to owning an entire application. It pairs an interactive Leaflet map with a Node and Express API backed by PostgreSQL, so places, ratings and reviews all persist and update without a page reload. Building it meant designing the database schema, exposing a REST API over it, and figuring out how map state stays in sync with the data underneath.",
+      "GeoRate is my first full-stack web project, and the one that pushed me from writing front ends to owning an entire application. It pairs an interactive Leaflet map with a Node and Express API backed by PostgreSQL, so places, ratings and reviews all persist and update without a page reload. Building it meant designing the schema for users, locations and reviews, exposing a REST API over it, and working out how map state stays in sync with the data underneath — then getting the whole thing deployed across three services with CI/CD.",
     highlights: [
-      "Interactive Leaflet map for browsing and discovering nearby places",
-      "Express REST API over PostgreSQL for places, ratings and reviews",
-      "Real-time updates to listings without a full page refresh",
-      "Responsive React interface styled with Tailwind CSS",
+      "Full-stack PERN architecture for persisting and exploring location-based reviews",
+      "Interactive Leaflet and OpenStreetMap interface for marking and browsing locations",
+      "REST APIs and schemas covering users, locations and reviews",
+      "CI/CD pipelines for automated deployment — frontend on Vercel, backend on Railway, database on Supabase",
     ],
-    technologies: ["React", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS", "Leaflet"],
+    technologies: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Leaflet",
+      "Vercel",
+      "Railway",
+      "Supabase",
+    ],
     repo: "https://github.com/sajeelhasan14/rate-map",
     liveUrl: "https://georate.vercel.app/",
     year: "2026",
@@ -184,37 +222,19 @@ export const PROJECTS: Project[] = [
     slug: "daily-stories",
     title: "Daily Stories",
     summary:
-      "Flutter blogging app with secure login and signup, full CRUD across multiple APIs, and local storage. State handled with Provider for a responsive UI.",
+      "Flutter blogging app with secure login and signup, full CRUD across multiple REST APIs, and Secure Storage. State handled with Provider for a responsive UI.",
     overview:
       "Daily Stories is a blogging app where you can write, edit and delete posts behind a real login. The interesting part was the plumbing: it talks to more than one API, so I had to keep a consistent model on the device while requests came back from different places, cache what I could locally, and make sure the UI never sat in an unexplained loading state.",
     highlights: [
       "Secure login and signup flow guarding the authoring screens",
       "Full create, read, update and delete against multiple REST APIs",
-      "Local storage so drafts and session data survive an app restart",
+      "Secure Storage so drafts and session data survive an app restart",
       "Provider state management keeping list and detail views consistent",
     ],
-    technologies: ["Flutter", "Dart", "Local Storage", "Provider"],
+    technologies: ["Flutter", "Dart", "Secure Storage", "Provider"],
     repo: "https://github.com/sajeelhasan14/blogs_app",
     screenshot: "/images/DailyStories.jpeg",
     year: "2025",
-    featured: true,
-  },
-  {
-    slug: "covid-tracker",
-    title: "COVID Tracker",
-    summary:
-      "Flutter app tracking global and country-wise COVID-19 statistics, with search, filtering and smooth async data handling.",
-    overview:
-      "COVID Tracker pulls live global and per-country statistics from a public REST API and makes them searchable. It is a small app, but it is where async in Dart finally clicked for me — handling loading, empty and error states properly, and keeping a long country list responsive while it filters.",
-    highlights: [
-      "Live global and country-level statistics from a public REST API",
-      "Search and filtering across the full country list",
-      "Careful async handling with explicit loading and error states",
-      "Clean list and detail layout for dense numeric data",
-    ],
-    technologies: ["Flutter", "Dart", "REST API"],
-    repo: "https://github.com/sajeelhasan14/covid_19",
-    year: "2024",
     featured: true,
   },
   {
@@ -234,6 +254,24 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/sajeelhasan14/notepad_app",
     screenshot: "/images/NoteIt.jpeg",
     year: "2025",
+    featured: false,
+  },
+  {
+    slug: "covid-tracker",
+    title: "COVID Tracker",
+    summary:
+      "Flutter app tracking global and country-wise COVID-19 statistics, with search, filtering and smooth async data handling.",
+    overview:
+      "COVID Tracker pulls live global and per-country statistics from a public REST API and makes them searchable. It is a small app, but it is where async in Dart finally clicked for me — handling loading, empty and error states properly, and keeping a long country list responsive while it filters.",
+    highlights: [
+      "Live global and country-level statistics from a public REST API",
+      "Search and filtering across the full country list",
+      "Careful async handling with explicit loading and error states",
+      "Clean list and detail layout for dense numeric data",
+    ],
+    technologies: ["Flutter", "Dart", "REST API"],
+    repo: "https://github.com/sajeelhasan14/covid_19",
+    year: "2024",
     featured: false,
   },
 ];
@@ -261,31 +299,42 @@ export const EXPERIENCE = [
   {
     id: 1,
     company: "Marktecs",
-    position: "Intern",
+    position: "Full Stack Developer",
     duration: "January 2026 – Present",
     current: true,
     description:
-      "Contributing to full-stack development projects, gaining hands-on experience in React, Node.js, and backend workflows while assisting the team in building scalable applications.",
+      "Architected and led frontend development of a multi-tenant e-commerce CRM — 60+ screens and 200+ components in Next.js 15, React 19 and TypeScript — and designed the Backend-for-Frontend layer underneath it.",
     highlights: [
-      "Assisting in frontend and backend development tasks.",
-      "Learning and applying full-stack best practices in real-world projects.",
-      "Collaborating with team members on debugging, testing, and feature development.",
+      "Defined the App Router structure, org-scoped routing and component system for a 60+ screen, 200+ component multi-tenant CRM.",
+      "Designed a Backend-for-Frontend layer of 150+ Next.js route handlers proxying a FastAPI service, with shared auth, error and response primitives and server-only API-key injection that kept backend secrets out of the client bundle.",
+      "Implemented caching and revalidation across analytics, product and customer routes, removing redundant backend round-trips on dashboard navigation.",
+      "Built the real-time WhatsApp inbox (WebSockets with auto-reconnect), global search, CSV import/export, and Shopify, WooCommerce and WhatsApp Cloud API integrations.",
     ],
   },
   {
     id: 2,
-    company: "Aga Khan University's Centre for Innovation in Medical Education (CIME)",
+    company: "Marfah Technologies",
+    position: "Flutter Developer Intern",
+    duration: "July 2025 – September 2025",
+    current: false,
+    description:
+      "Built responsive mobile interfaces in Flutter and integrated REST APIs for dynamic data handling, working remotely with the team to ship features on schedule.",
+    highlights: [
+      "Built responsive mobile UIs using Flutter and integrated REST APIs for dynamic data handling.",
+      "Collaborated remotely to implement features, fix bugs, and meet project deadlines efficiently.",
+    ],
+  },
+  {
+    id: 3,
+    company: "Aga Khan University’s CIME",
     position: "Tech Analyst Intern",
     duration: "May 2024 – May 2025",
     current: false,
     description:
-      "Contributed to simulation-based healthcare education by preparing and supporting high-tech simulators for medical training sessions. Developed a Python-based interactive assistant that guides visitors and students through CIME, providing real-time information about rooms, classes, instructors, and facilities. Integrated the assistant into a robotic prototype to create an interactive experience.",
+      "Developed a Python-based chatbot guiding visitors and students around the CIME facility, later integrated into a robotic prototype, alongside supporting the simulation systems used in medical training.",
     highlights: [
-      "Designed and implemented a Python-based assistant (chatbot-like system) to provide real-time guidance to visitors and students, enhancing navigation and accessibility.",
-      "Engineered backend logic for handling queries about classrooms, floors, instructors, and facility information, showcasing problem-solving and software development skills.",
-      "Integrated the assistant with a robotic interface to allow interactive, user-friendly experiences.",
-      "Maintained and supported simulation software and equipment for smooth operation during medical training sessions.",
-      "Collaborated with educators and technical staff to customize simulation setups, ensuring both technical accuracy and usability.",
+      "Developed a Python-based chatbot to guide users about CIME facilities, later integrated into a robotic prototype for interactive use.",
+      "Assisted in configuring and troubleshooting simulation systems, ensuring smooth technical operations during training sessions.",
     ],
   },
 ] as const;
@@ -296,7 +345,7 @@ export const EDUCATION = [
     school: "University of Karachi (UBIT)",
     degree: "B.Sc. in Software Engineering",
     field: "Software Engineering",
-    year: "Expected 2027",
+    year: "2023 – 2027 (Expected)",
     current: true,
     description: "Focused on full-stack development, databases, and software architecture.",
   },

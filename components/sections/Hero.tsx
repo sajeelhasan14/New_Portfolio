@@ -39,8 +39,9 @@ export function Hero() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-end gap-7 border-t border-ink/10 pt-7">
           <p className="m-0 max-w-[42ch] text-[clamp(15px,1.4vw,19px)] leading-[1.55] text-pretty text-muted">
-            Software Engineering student in Karachi. I started out in Flutter, moved into React
-            and Next.js, and now build the server side too — Node, Express and PostgreSQL.
+            Software Engineering student in Karachi, full-stack developer at Marktecs. I build
+            multi-tenant web apps, the APIs and data models under them, and AI agents that do
+            real work.
           </p>
 
           <div className="flex flex-wrap gap-3">

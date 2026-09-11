@@ -7,9 +7,10 @@ import { GithubIcon } from "./BrandIcons";
 import { cn } from "@/lib/utils";
 
 /**
- * The stored screenshots are portrait phone captures, so they're contained on a
- * purple gradient rather than cropped to a landscape frame. Projects without a
- * screenshot get a monogram panel instead.
+ * The frame is 16:9 and the screenshot fills it. The stored sheets are
+ * multi-phone composites wider than that (up to 2.46:1), so their left and
+ * right edges are trimmed — export project shots at 16:9 to avoid the crop.
+ * Projects without a screenshot get a monogram panel instead.
  */
 export function ProjectThumb({ project, className }: { project: Project; className?: string }) {
   return (
@@ -29,7 +30,7 @@ export function ProjectThumb({ project, className }: { project: Project; classNa
           alt={`${project.title} app screenshot`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="scale-90 object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-95"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (
         <span
@@ -50,7 +51,7 @@ export function ProjectCard({ project }: { project: Project }) {
         href={`/projects/${project.slug}`}
         className="flex flex-1 flex-col focus-visible:outline-none"
       >
-        <ProjectThumb project={project} className="h-56 w-full shrink-0" />
+        <ProjectThumb project={project} className="aspect-video w-full shrink-0" />
 
         <div className="flex flex-1 flex-col p-6">
           <div className="mb-3 flex items-start justify-between gap-4">

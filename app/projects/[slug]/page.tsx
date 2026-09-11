@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: PageProps<"/projects
         {project.screenshot && (
           <Reveal delay={100} className="mt-14">
             <div className="card overflow-hidden">
-              <ProjectThumb project={project} className="h-104 w-full sm:h-128" />
+              <ProjectThumb project={project} className="aspect-video w-full" />
             </div>
             <p className="mt-3 text-center font-mono text-xs text-muted-2">
               {project.title} running on device

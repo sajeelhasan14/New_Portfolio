@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const description =
-  "Software Engineering student in Karachi building full-stack web apps with React, Next.js, Node and PostgreSQL — and mobile apps with Flutter.";
+  "Software Engineering student and full-stack developer in Karachi. I build multi-tenant web apps in Next.js and TypeScript, the Node and PostgreSQL services under them, and agentic AI with the OpenAI Agents SDK.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,11 +30,15 @@ export const metadata: Metadata = {
   keywords: [
     "Sajeel Hasan",
     "Full-Stack Developer",
-    "React",
     "Next.js",
-    "Flutter",
+    "React",
+    "TypeScript",
     "Node.js",
     "PostgreSQL",
+    "OpenAI Agents SDK",
+    "RAG",
+    "pgvector",
+    "Flutter",
     "Karachi",
     "Software Engineer",
   ],
