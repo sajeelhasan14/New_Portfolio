@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Mono chip used for tech stacks. `interactive` adds the purple hover fill. */
+/** Mono chip used for tech stacks: accent text on an accent tint. */
 export function TechPill({
   children,
   className,
@@ -13,9 +13,9 @@ export function TechPill({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-border bg-surface-2/60 px-3 py-1",
-        "font-mono text-xs text-muted transition-colors duration-200",
-        interactive && "hover:border-brand hover:bg-brand/15 hover:text-white",
+        "inline-flex items-center bg-brand/10 px-3 py-1",
+        "font-mono text-xs font-medium text-brand transition-colors duration-200",
+        interactive && "hover:bg-brand hover:text-bg",
         className,
       )}
     >

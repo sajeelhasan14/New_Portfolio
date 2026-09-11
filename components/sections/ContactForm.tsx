@@ -198,7 +198,7 @@ export function ContactForm() {
                   href={`mailto:${PROFILE.email}`}
                   className="group flex items-start gap-4 transition-colors"
                 >
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-brand/25 bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-bg">
+                  <span className="grid size-11 shrink-0 place-items-center border border-brand/25 bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-bg">
                     <Mail className="size-5" />
                   </span>
                   <span className="min-w-0">
@@ -215,7 +215,7 @@ export function ContactForm() {
                   href={`tel:${PROFILE.phone.replace(/\s/g, "")}`}
                   className="group flex items-start gap-4"
                 >
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-brand/25 bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-bg">
+                  <span className="grid size-11 shrink-0 place-items-center border border-brand/25 bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-bg">
                     <Phone className="size-5" />
                   </span>
                   <span>

@@ -4,7 +4,7 @@
    Design tokens — ported from design/Portfolio.dc.html
    Two grounds, not one: a near-black stage (#08090B) and a warm
    cream slab (#F1EEE8) that the About/Services block sits on.
-   One accent (#5B8CFF) carries every highlight.
+   One accent (#4DFFB8) carries every highlight.
    ============================================================ */
 @theme {
   /* Dark ground */
@@ -14,11 +14,13 @@
   --color-border: #1f2124;
   --color-border-strong: #363739;
 
-  /* The blue */
-  --color-brand: #5b8cff;
-  --color-brand-bright: #8fb0ff;
-  --color-brand-deep: #2e4fa8;
-  --color-brand-ink: #2e4fa8;
+  /* The mint. `ink` is the cream-slab variant: green is perceptually far
+     brighter than blue, so the design's L=38% rule only reached 2.0:1 on
+     #F1EEE8. Pinned to L=20% instead for 6.1:1, matching the old blue. */
+  --color-brand: #4dffb8;
+  --color-brand-bright: #8affd0;
+  --color-brand-deep: #00995c;
+  --color-brand-ink: #00663d;
 
   /* Text on the dark ground. `ink` is the raw paper colour — use it
      with an opacity modifier (border-ink/10) for the hairlines the
@@ -50,6 +52,18 @@
 
 /* Marquee pair — `mq` runs left, `mqr` runs right. Both assume the
    track's children are duplicated once, so -50% lands on a seam. */
+/* Accent tints. Every wash and glow references these, so re-theming the
+   site means editing the four tokens above plus these four lines — not
+   hunting rgba() literals through a dozen components. */
+:root {
+  --brand-soft: rgba(77, 255, 184, 0.08);
+  --brand-wash: rgba(77, 255, 184, 0.12);
+  --brand-strong: rgba(77, 255, 184, 0.22);
+  --brand-heavy: rgba(77, 255, 184, 0.35);
+  --brand-glow: rgba(77, 255, 184, 0.7);
+  --brand-glow-hi: rgba(77, 255, 184, 0.9);
+}
+
 @keyframes mq {
   from {
     transform: translateX(0);
@@ -66,6 +80,23 @@
   to {
     transform: translateX(0);
   }
+}
+
+/* ============================================================
+   Marquee tracks
+   The animation has to live here, not in an inline `style`. The
+   `animation` shorthand resets every longhand it covers — including
+   animation-play-state: running — and an inline declaration outranks
+   any class rule, so a hover rule could never pause it. Passing only
+   the duration through a custom property keeps play-state overridable.
+   ============================================================ */
+.marquee-track {
+  animation: mq var(--mq-duration, 24s) linear infinite;
+}
+
+/* Only the row under the cursor pauses; its neighbours keep sliding. */
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 @keyframes blink {
@@ -183,11 +214,34 @@
     @apply mx-auto w-full max-w-4xl;
   }
 
+  /* Notched corner — top-left and bottom-right cut at 12px. Lifted from the
+     reference portfolio's `.clip-corner`; it reads sharp and engineered where
+     a border-radius reads soft. Pair it with a border, never a shadow: a
+     clip-path crops the shadow off. */
+  .clip-corner {
+    clip-path: polygon(
+      12px 0%,
+      100% 0%,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      0% 100%,
+      0% 12px
+    );
+  }
+
   .card {
-    @apply relative rounded-2xl border border-border bg-surface transition-all duration-300;
+    @apply relative border border-border bg-surface transition-all duration-300;
+    clip-path: polygon(
+      12px 0%,
+      100% 0%,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      0% 100%,
+      0% 12px
+    );
   }
   .card-hover {
-    @apply hover:-translate-y-1 hover:border-brand/50 hover:bg-surface-2 hover:shadow-[0_0_0_1px_rgba(91,140,255,0.15),0_18px_50px_-20px_rgba(91,140,255,0.45)];
+    @apply hover:border-brand hover:bg-surface-2;
   }
 
   .text-gradient {
@@ -201,7 +255,7 @@
   .dot-grid {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(91, 140, 255, 0.12) 1px,
+      var(--brand-wash) 1px,
       transparent 0
     );
     background-size: 32px 32px;
@@ -231,6 +285,11 @@
   opacity: 0.08;
 }
 
+/* The cascade styles the children, so they carry the pre-reveal state. */
+[data-fx="rows"] > * {
+  opacity: 0.06;
+}
+
 [data-fx="card"] {
   will-change: transform;
 }
@@ -249,9 +308,11 @@
   }
 
   /* Nothing may stay hidden waiting for a scroll that won't animate. */
-  [data-fx] {
+  [data-fx],
+  [data-fx="rows"] > * {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 
   /* The statement section is 440vh of scroll runway for one zoom.

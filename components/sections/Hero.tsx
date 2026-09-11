@@ -10,17 +10,16 @@ export function Hero() {
       {/* Accent wash bleeding down from the top-right */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_10%,rgba(91,140,255,0.12),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_10%,var(--brand-wash),transparent_70%)]"
       />
 
       <div className="relative flex flex-col gap-10">
         <div className="flex flex-wrap items-center gap-[18px] font-mono text-[11px] tracking-[0.2em] text-muted-2">
-          <span className="inline-flex items-center gap-2 rounded-full border border-ink/[0.14] px-3.5 py-[7px]">
+          <span className="inline-flex items-center gap-2 border border-ink/[0.14] px-3.5 py-[7px]">
             {PROFILE.availability.toUpperCase()}
           </span>
           <span>{PROFILE.location.toUpperCase()}</span>
-          <span aria-hidden>/</span>
-          <span>B.SC. SOFTWARE ENGINEERING</span>
+          
         </div>
 
         <h1
@@ -47,13 +46,13 @@ export function Hero() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="#work"
-              className="inline-flex items-center gap-2.5 rounded-full bg-brand px-6.5 py-[15px] text-sm font-semibold text-bg transition-colors hover:bg-fg"
+              className="inline-flex items-center gap-2.5 bg-brand px-6.5 py-[15px] text-sm font-semibold text-bg transition-colors hover:bg-fg"
             >
               See selected work →
             </Link>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2.5 rounded-full border border-ink/20 px-6.5 py-[15px] text-sm font-medium text-fg transition-colors hover:border-fg"
+              className="inline-flex items-center gap-2.5 border border-ink/20 px-6.5 py-[15px] text-sm font-medium text-fg transition-colors hover:border-fg"
             >
               Get in touch
             </Link>

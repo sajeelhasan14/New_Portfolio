@@ -76,12 +76,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Scroll-driven sections start dimmed and are revealed by ScrollFx,
             so without JS they'd never appear. Show everything instead. */}
         <noscript>
-          <style>{`[data-reveal],[data-fx]{opacity:1 !important;transform:none !important}`}</style>
+          <style>{`[data-reveal],[data-fx],[data-fx="rows"]>*{opacity:1 !important;transform:none !important;filter:none !important}`}</style>
         </noscript>
 
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:bg-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-bg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-bg"
         >
           Skip to content
         </a>

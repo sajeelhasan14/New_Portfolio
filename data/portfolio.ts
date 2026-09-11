@@ -14,9 +14,9 @@ export const PROFILE = {
   title: "Software Engineering Student & Full-Stack Developer",
   tagline: "Building scalable web apps, backend systems and AI-powered products",
   location: "Karachi, Pakistan",
-  bio: "I'm a Software Engineering student and full-stack developer with hands-on experience building scalable web applications, backend systems, APIs, databases and AI-powered products. Most of my work lives on the server side — route handlers, data models, auth and caching — but I ship the interface too, so nothing gets lost at the boundary.",
+  bio: "I'm a Software Engineering student and full-stack developer. I build web apps end to end — the interface, the APIs under it, and increasingly the AI layer on top. Most of my work is server-side: schemas, auth, caching, the parts that decide whether a product holds up under real traffic.",
   bioSecondary:
-    "At Marktecs I architected the frontend of a multi-tenant e-commerce CRM and the Backend-for-Frontend layer underneath it. Outside work I'm most interested in backend architecture, system design, and agentic AI — building software that stays reliable once it's in production and real traffic arrives.",
+    "Right now I'm going deep on agentic AI and RAG. Building MAIL-AI showed me the gap between a chatbot wrapper and a real agent — one that picks its own tool calls, grounded in pgvector embeddings so it retrieves by meaning, not keyword. The interesting engineering is around the model, not in it.",
   email: "sajeel.hasan14@gmail.com",
   phone: "+92 333 2263110",
   availability: "Open to full-stack & backend roles",
@@ -141,6 +141,21 @@ export type Project = {
   liveUrl?: string;
   /** A screenshot to render — never linked as though it were a live demo. */
   screenshot?: string;
+  /**
+   * Intrinsic aspect ratio of `screenshot` (width / height). The card sizes its
+   * frame to this, so the image fills it exactly — never cropped, never
+   * letterboxed. The Flutter contact sheets are much wider than the web
+   * captures, which is why one fixed ratio never suited all of them.
+   */
+  imageRatio?: number;
+  /**
+   * Full-resolution, untrimmed capture for the case-study page, where the
+   * image is shown large and people zoom into it. `screenshot` is a trimmed
+   * ~1366px crop tuned for card size; that source softens badly when scaled
+   * up. Falls back to `screenshot` when there is no larger original.
+   */
+  screenshotFull?: string;
+  screenshotFullRatio?: number;
   year: string;
   featured: boolean;
 };
@@ -168,6 +183,9 @@ export const PROJECTS: Project[] = [
       "PostgreSQL",
       "pgvector",
     ],
+    liveUrl: "https://mail-ai-by-sajeel.vercel.app",
+    screenshot: "/images/MailAI.png",
+    imageRatio: 1366 / 768,
     year: "2026",
     featured: true,
   },
@@ -196,6 +214,8 @@ export const PROJECTS: Project[] = [
     ],
     repo: "https://github.com/sajeelhasan14/rate-map",
     liveUrl: "https://georate.vercel.app/",
+    screenshot: "/images/GeoRate.png",
+    imageRatio: 1366 / 768,
     year: "2026",
     featured: true,
   },
@@ -214,7 +234,10 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ["Flutter", "Dart", "Firebase", "Provider", "Dio"],
     repo: "https://github.com/sajeelhasan14/book_finder",
-    screenshot: "/images/BookFinder.jpeg",
+    screenshot: "/images/BookFinder.jpg",
+    imageRatio: 1366 / 682,
+    screenshotFull: "/images/BookFinder-full.jpeg",
+    screenshotFullRatio: 1920 / 960,
     year: "2025",
     featured: true,
   },
@@ -233,7 +256,10 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ["Flutter", "Dart", "Secure Storage", "Provider"],
     repo: "https://github.com/sajeelhasan14/blogs_app",
-    screenshot: "/images/DailyStories.jpeg",
+    screenshot: "/images/BlogApp.jpg",
+    imageRatio: 1353 / 469,
+    screenshotFull: "/images/BlogApp-full.jpeg",
+    screenshotFullRatio: 5321 / 2160,
     year: "2025",
     featured: true,
   },
@@ -252,7 +278,10 @@ export const PROJECTS: Project[] = [
     ],
     technologies: ["Flutter", "Dart", "Local Storage", "Provider", "SharedPreferences"],
     repo: "https://github.com/sajeelhasan14/notepad_app",
-    screenshot: "/images/NoteIt.jpeg",
+    screenshot: "/images/NoteIt.jpg",
+    imageRatio: 1366 / 508,
+    screenshotFull: "/images/NoteIt-full.jpeg",
+    screenshotFullRatio: 3840 / 2160,
     year: "2025",
     featured: false,
   },

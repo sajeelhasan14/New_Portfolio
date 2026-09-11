@@ -13,7 +13,7 @@ export function Experience() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,270px),1fr))] gap-px overflow-hidden rounded-[20px] border border-ink/10 bg-ink/10">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,270px),1fr))] clip-corner gap-px overflow-hidden border border-ink/10 bg-ink/10">
         {EXPERIENCE.map((role, i) => (
           <div
             key={role.id}

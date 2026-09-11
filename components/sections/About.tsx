@@ -13,7 +13,7 @@ export function About() {
         <div className="flex flex-col gap-5">
           <span className="eyebrow eyebrow-ink">(01) About</span>
           <h2 className="m-0 text-[clamp(30px,4.6vw,68px)] leading-[1.02] font-medium tracking-[-0.035em] text-balance">
-            Started in Flutter. Now I own the whole stack.
+            Started in Flutter. Now I build the stack and the agents on top.
           </h2>
         </div>
 
@@ -27,7 +27,7 @@ export function About() {
 
           {/* Hairline grid: the 1px gap on a tinted parent draws the rules,
               so each cell only paints its own cream ground. */}
-          <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-px overflow-hidden rounded-2xl border border-cream-ink/14 bg-cream-ink/14">
+          <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] clip-corner gap-px overflow-hidden border border-cream-ink/14 bg-cream-ink/14">
             {STATS.map((stat) => (
               <div
                 key={stat.label}

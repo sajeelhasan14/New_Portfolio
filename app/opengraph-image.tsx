@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             width: 640,
             height: 640,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(91,140,255,0.55) 0%, rgba(8,9,11,0) 70%)",
+            background: "radial-gradient(circle, rgba(77,255,184,0.55) 0%, rgba(8,9,11,0) 70%)",
             display: "flex",
           }}
         />
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
             width: 620,
             height: 620,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(46,79,168,0.7) 0%, rgba(8,9,11,0) 70%)",
+            background: "radial-gradient(circle, rgba(0,153,92,0.7) 0%, rgba(8,9,11,0) 70%)",
             display: "flex",
           }}
         />
@@ -52,7 +52,7 @@ export default function OpengraphImage() {
               display: "flex",
               alignItems: "center",
               gap: 12,
-              color: "#8FB0FF",
+              color: "#8AFFD0",
               fontSize: 24,
               letterSpacing: 4,
               textTransform: "uppercase",
@@ -72,7 +72,7 @@ export default function OpengraphImage() {
               fontWeight: 700,
               lineHeight: 1.05,
               letterSpacing: -3,
-              background: "linear-gradient(90deg, #8FB0FF 0%, #5B8CFF 100%)",
+              background: "linear-gradient(90deg, #8AFFD0 0%, #4DFFB8 100%)",
               backgroundClip: "text",
               color: "transparent",
             }}
@@ -95,7 +95,7 @@ export default function OpengraphImage() {
             }}
           >
             <span>{PROFILE.location}</span>
-            <span style={{ color: "#5B8CFF" }}>•</span>
+            <span style={{ color: "#4DFFB8" }}>•</span>
             <span>React · Next.js · Node · Flutter</span>
           </div>
         </div>

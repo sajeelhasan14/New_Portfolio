@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
  */
 const buttonVariants = cva(
   [
-    "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full",
+    "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap",
     "font-medium transition-all duration-200 outline-none",
     "disabled:pointer-events-none disabled:opacity-50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -19,8 +19,8 @@ const buttonVariants = cva(
       variant: {
         /* Solid blue with a glow that intensifies on hover */
         primary: [
-          "bg-brand text-bg shadow-[0_8px_30px_-8px_rgba(91,140,255,0.7)]",
-          "hover:bg-brand-bright hover:shadow-[0_10px_40px_-6px_rgba(91,140,255,0.9)]",
+          "bg-brand text-bg shadow-[0_8px_30px_-8px_var(--brand-glow)]",
+          "hover:bg-brand-bright hover:shadow-[0_10px_40px_-6px_var(--brand-glow-hi)]",
           "active:scale-[0.97]",
         ],
         /* Hairline outline that warms to blue */

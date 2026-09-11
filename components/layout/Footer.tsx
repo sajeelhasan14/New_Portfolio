@@ -1,6 +1,7 @@
+import type React from "react";
 import { PROFILE } from "@/data/portfolio";
 
-const MARQUEE = ["Let’s work together", "—", "Open to internships", "—"];
+const MARQUEE = ["Let’s work together", "—", "Available for work", "—"];
 
 export function Footer() {
   return (
@@ -8,8 +9,8 @@ export function Footer() {
       <div className="overflow-hidden pt-[clamp(48px,7vw,110px)]">
         {/* Doubled so the -50% keyframe lands on a seam. */}
         <div
-          className="flex w-max gap-10 hover:[animation-play-state:paused]"
-          style={{ animation: "mq 26s linear infinite" }}
+          className="marquee-track flex w-max gap-10"
+          style={{ "--mq-duration": "26s" } as React.CSSProperties}
         >
           {[...MARQUEE, ...MARQUEE].map((word, i) => (
             <span

@@ -13,7 +13,7 @@ export function Contact() {
     <section id="contact" className="gutter pt-[clamp(60px,7vw,110px)]">
       <div
         data-fx="zoom"
-        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-end gap-[clamp(28px,4vw,64px)] rounded-[28px] border border-brand/34 bg-[linear-gradient(160deg,rgba(91,140,255,0.12),rgba(14,16,19,0.6))] p-[clamp(32px,5vw,88px)]"
+        className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-end clip-corner gap-[clamp(28px,4vw,64px)] border border-brand/34 bg-[linear-gradient(160deg,var(--brand-wash),rgba(14,16,19,0.6))] p-[clamp(32px,5vw,88px)]"
       >
         <div className="flex flex-col gap-5">
           <span className="eyebrow">(07) Contact</span>
@@ -21,7 +21,7 @@ export function Contact() {
             Have a role or a project in mind?
           </h2>
           <p className="m-0 max-w-[44ch] text-[17px] leading-[1.6] text-pretty text-muted">
-            Send me a message — about a role, an internship, or something you want built. I read
+            Send me a message — about a role, a project, or something you want built. I read
             everything and reply within a day.
           </p>
         </div>
@@ -41,7 +41,7 @@ export function Contact() {
                 href={pill.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-ink/18 px-4.5 py-2.5 text-fg transition-colors hover:border-brand"
+                className="border border-ink/18 px-4.5 py-2.5 text-fg transition-colors hover:border-brand"
               >
                 {pill.label}
               </a>

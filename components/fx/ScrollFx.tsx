@@ -10,6 +10,8 @@ import { useEffect } from "react";
  * element, rather than each section owning its own observer:
  *
  *   rise / zoom / drift  — enter-on-scroll transforms
+ *   rows                 — a container whose children cascade in together,
+ *                          finishing as the block reaches viewport centre
  *   card                 — the sticky work cards, scaled and dimmed as the
  *                          next one slides over them
  *   stage / grow / ui    — the statement section: words fill left to right,
@@ -26,7 +28,7 @@ const AMP_DEFAULT = 1;
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
-/** "#5b8cff" | "#5bf" -> [91, 140, 255] */
+/** "#4dffb8" | "#5bf" -> [77, 255, 184] */
 function readAccent(): [number, number, number] {
   const raw = getComputedStyle(document.documentElement)
     .getPropertyValue("--color-brand")
@@ -36,7 +38,7 @@ function readAccent(): [number, number, number] {
   const r = parseInt(hex.slice(0, 2), 16);
   const g = parseInt(hex.slice(2, 4), 16);
   const b = parseInt(hex.slice(4, 6), 16);
-  return Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b) ? [91, 140, 255] : [r, g, b];
+  return Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b) ? [77, 255, 184] : [r, g, b];
 }
 
 export function ScrollFx() {
@@ -168,12 +170,44 @@ export function ScrollFx() {
             el.style.top = `${Math.round((vh() - el.offsetHeight) / 2)}px`;
             el.style.opacity = "1";
           }
+        } else if (fx === "rows") {
+          // Staggered list reveal, driven by the CONTAINER's position rather
+          // than each row's own. Anchoring per-row means the cascade chases
+          // the scroll: by the time the last row triggers, the first has left
+          // the screen. Here one progress value runs the whole group and is
+          // pinned to 1 the moment the block reaches the viewport centre, so
+          // every row is revealed and visible together at that point.
+          const kids = Array.from(el.children) as HTMLElement[];
+          if (!kids.length) continue;
+
+          const centre = r.top + r.height / 2;
+          const t = clamp01((vh() - centre) / (vh() / 2));
+
+          // 45% of the runway is spent fanning the rows out, the remaining
+          // 55% is each row's own travel — so the last one still lands on t=1.
+          const SPREAD = 0.45;
+          const span = kids.length > 1 ? SPREAD / (kids.length - 1) : 0;
+
+          kids.forEach((kid, k) => {
+            const rp = clamp01((t - k * span) / (1 - SPREAD));
+            const e = 1 - Math.pow(1 - rp, 3); // easeOutCubic
+            kid.style.transform = `translateY(${(32 * amp * (1 - e)).toFixed(1)}px)`;
+            kid.style.opacity = e.toFixed(3);
+            // Sharpening out of a blur reads as the row "focusing in", which
+            // sits better beside the horizontal marquee than another slide.
+            kid.style.filter = amp ? `blur(${(8 * (1 - e)).toFixed(2)}px)` : "none";
+          });
         } else if (fx === "card") {
           const p = clamp01((110 - r.top) / vh());
           el.style.transform = `scale(${(1 - 0.06 * p * amp).toFixed(4)})`;
           el.style.opacity = (1 - 0.35 * p * amp).toFixed(3);
         } else {
-          const p = clamp01((vh() * 0.94 - r.top) / (vh() * 0.5));
+          // `data-fx-offset` pushes an element's trigger point further down the
+          // page. Sibling rows sitting only ~60px apart would otherwise all
+          // cross the threshold at once; an increasing offset per row makes
+          // them reveal one at a time as the scroll continues.
+          const offset = Number(el.dataset.fxOffset) || 0;
+          const p = clamp01((vh() * 0.94 - r.top - offset) / (vh() * 0.5));
           const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
 
           if (fx === "zoom") {

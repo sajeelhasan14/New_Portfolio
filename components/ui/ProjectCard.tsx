@@ -15,9 +15,11 @@ import { cn } from "@/lib/utils";
 export function ProjectThumb({ project, className }: { project: Project; className?: string }) {
   return (
     <div
+      /* Frame matches the screenshot's own ratio, so nothing is cropped. */
+      style={project.imageRatio ? { aspectRatio: project.imageRatio } : undefined}
       className={cn(
         "relative flex items-center justify-center overflow-hidden",
-        "bg-[radial-gradient(ellipse_at_50%_0%,rgba(91,140,255,0.35),transparent_65%)]",
+        "bg-[radial-gradient(ellipse_at_50%_0%,var(--brand-heavy),transparent_65%)]",
         "bg-surface-2",
         className,
       )}
@@ -29,7 +31,8 @@ export function ProjectThumb({ project, className }: { project: Project; classNa
           src={project.screenshot}
           alt={`${project.title} app screenshot`}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={90}
+          sizes="(max-width: 768px) 100vw, 900px"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (
@@ -67,12 +70,9 @@ export function ProjectCard({ project }: { project: Project }) {
           <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">{project.summary}</p>
 
           <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech) => (
+            {project.technologies.map((tech) => (
               <TechPill key={tech}>{tech}</TechPill>
             ))}
-            {project.technologies.length > 4 && (
-              <TechPill className="text-muted-2">+{project.technologies.length - 4}</TechPill>
-            )}
           </div>
         </div>
       </Link>

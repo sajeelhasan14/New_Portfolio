@@ -18,10 +18,10 @@ export function SocialLinks({ className }: { className?: string }) {
               aria-label={link.label}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={cn(
-                "group grid size-11 place-items-center rounded-full border border-border bg-surface/60",
+                "group grid size-11 place-items-center border border-border bg-surface/60",
                 "text-muted transition-all duration-300",
                 "hover:-translate-y-0.5 hover:border-brand hover:bg-brand/15 hover:text-white",
-                "hover:shadow-[0_8px_24px_-8px_rgba(91,140,255,0.7)]",
+                "hover:shadow-[0_8px_24px_-8px_var(--brand-glow)]",
               )}
             >
               <Icon className="size-[18px]" />

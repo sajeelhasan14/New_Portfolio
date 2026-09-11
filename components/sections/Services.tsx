@@ -18,7 +18,7 @@ export function Services() {
           <div
             key={service.title}
             data-fx="rise"
-            className="grid grid-cols-[minmax(0,44px)_minmax(0,1fr)] items-start gap-x-4 gap-y-3 border-t border-cream-ink/12 py-[clamp(22px,3vw,38px)] transition-[background] duration-300 md:grid-cols-[minmax(0,68px)_minmax(0,1.1fr)_minmax(0,1.4fr)] md:gap-[clamp(16px,3vw,48px)] hover:bg-[linear-gradient(90deg,rgba(91,140,255,0.12),transparent_62%)]"
+            className="grid grid-cols-[minmax(0,44px)_minmax(0,1fr)] items-start gap-x-4 gap-y-3 border-t border-cream-ink/12 py-[clamp(22px,3vw,38px)] transition-[background] duration-300 md:grid-cols-[minmax(0,68px)_minmax(0,1.1fr)_minmax(0,1.4fr)] md:gap-[clamp(16px,3vw,48px)] hover:bg-[linear-gradient(90deg,var(--brand-wash),transparent_62%)]"
           >
             <span className="font-mono text-[11px] tracking-[0.18em] text-cream-dim">
               {String(i + 1).padStart(3, "0")}

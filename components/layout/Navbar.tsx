@@ -65,7 +65,7 @@ export function Navbar() {
 
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-[9px] font-medium tracking-[0.14em] text-bg transition-colors hover:bg-fg"
+            className="inline-flex items-center gap-2 bg-brand px-4 py-[9px] font-medium tracking-[0.14em] text-bg transition-colors hover:bg-fg"
           >
             LET&apos;S TALK
           </Link>
@@ -119,7 +119,7 @@ export function Navbar() {
             <Link
               href="/#contact"
               onClick={() => setOpen(false)}
-              className="mt-6 inline-flex w-fit items-center rounded-full bg-brand px-7 py-4 text-sm font-semibold text-bg"
+              className="mt-6 inline-flex w-fit items-center bg-brand px-7 py-4 text-sm font-semibold text-bg"
             >
               Get in touch
             </Link>

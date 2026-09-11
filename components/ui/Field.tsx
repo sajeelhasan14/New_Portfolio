@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const base = [
-  "w-full rounded-xl border border-border bg-surface-2/60 px-4 text-sm text-fg",
+  "w-full border border-border bg-surface-2/60 px-4 text-sm text-fg",
   "placeholder:text-muted-2 transition-all duration-200",
   "hover:border-border-strong",
   "focus:border-brand focus:bg-surface-2 focus:outline-none focus:ring-4 focus:ring-brand/20",
