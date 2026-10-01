@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NAV_LINKS, PROFILE } from "@/data/portfolio";
+import { Logo } from "@/components/ui/Logo";
 
 /**
  * Fixed header from the design.
@@ -43,7 +44,7 @@ export function Navbar() {
           data-bar-ink=""
           className="flex items-center gap-2.5 text-fg transition-opacity hover:opacity-80"
         >
-          <span className="inline-block size-2.5 animate-blink rounded-full bg-brand" />
+          <Logo size={22} />
           <span className="text-[15px] font-semibold tracking-[0.14em]">
             {PROFILE.shortName.toUpperCase()}
           </span>
@@ -90,7 +91,7 @@ export function Navbar() {
         <div className="fixed inset-0 z-60 flex flex-col bg-bg md:hidden">
           <div className="gutter flex items-center justify-between py-[18px]">
             <span className="flex items-center gap-2.5 text-fg">
-              <span className="inline-block size-2.5 rounded-full bg-brand" />
+              <Logo size={22} />
               <span className="text-[15px] font-semibold tracking-[0.14em]">
                 {PROFILE.shortName.toUpperCase()}
               </span>
