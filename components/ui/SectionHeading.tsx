@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 
 type SectionHeadingProps = {
-  /** Mono label rendered after a purple ">" marker. */
+  /** Mono label rendered after a "//" marker. */
   eyebrow: string;
   title: React.ReactNode;
   description?: string;
@@ -27,7 +27,7 @@ export function SectionHeading({
     >
       <span className="eyebrow">
         <span aria-hidden className="text-brand-bright">
-          &gt;
+          {"//"}
         </span>
         {eyebrow}
       </span>

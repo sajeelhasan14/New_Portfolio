@@ -4,35 +4,35 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="gutter border-t border-ink/8 py-[clamp(60px,7vw,120px)]"
+      className="gutter paper-grid border-t border-cream-ink/12 bg-cream py-[clamp(60px,7vw,120px)] text-cream-ink"
     >
       <div className="mb-[clamp(32px,4vw,60px)] flex flex-wrap items-baseline justify-between gap-6">
-        <span className="eyebrow">(05) Experience</span>
+        <span className="eyebrow eyebrow-ink">(05) Experience</span>
         <h2 className="m-0 text-[clamp(28px,4vw,58px)] leading-[1.05] font-medium tracking-[-0.035em]">
           Where I&apos;ve worked
         </h2>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,270px),1fr))] clip-corner gap-px overflow-hidden border border-ink/10 bg-ink/10">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,270px),1fr))] clip-corner gap-px overflow-hidden border border-cream-ink/14 bg-cream-ink/14">
         {EXPERIENCE.map((role, i) => (
           <div
             key={role.id}
             data-fx="zoom"
-            className="flex min-h-70 flex-col gap-4 bg-bg p-[clamp(26px,3vw,44px)] transition-colors duration-300 hover:bg-surface"
+            className="flex min-h-70 flex-col gap-4 bg-cream p-[clamp(26px,3vw,44px)] transition-colors duration-300 hover:bg-cream-2"
           >
-            <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.18em] text-dim">
-              <span className="text-brand">{String(i + 1).padStart(2, "0")}</span>
+            <div className="flex justify-between gap-4 font-mono text-[11px] tracking-[0.18em] text-cream-dim">
+              <span className="text-brand-ink">{String(i + 1).padStart(2, "0")}</span>
               <span>{role.duration.toUpperCase()}</span>
             </div>
 
             <h3 className="m-0 mt-auto text-[clamp(22px,2.4vw,32px)] leading-[1.08] font-medium tracking-[-0.03em]">
               {role.position}
             </h3>
-            <span className="font-mono text-[11px] tracking-[0.14em] text-brand">
+            <span className="font-mono text-[11px] tracking-[0.14em] text-brand-ink">
               {role.company}
             </span>
 
-            <p className="m-0 text-[15px] leading-[1.6] text-pretty text-muted-2">
+            <p className="m-0 text-[15px] leading-[1.6] text-pretty text-cream-muted">
               {role.description}
             </p>
           </div>

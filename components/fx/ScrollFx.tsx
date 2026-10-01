@@ -28,7 +28,7 @@ const AMP_DEFAULT = 1;
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
-/** "#4dffb8" | "#5bf" -> [77, 255, 184] */
+/** "#e84c23" | "#5bf" -> [232, 76, 35] */
 function readAccent(): [number, number, number] {
   const raw = getComputedStyle(document.documentElement)
     .getPropertyValue("--color-brand")
@@ -38,7 +38,7 @@ function readAccent(): [number, number, number] {
   const r = parseInt(hex.slice(0, 2), 16);
   const g = parseInt(hex.slice(2, 4), 16);
   const b = parseInt(hex.slice(4, 6), 16);
-  return Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b) ? [77, 255, 184] : [r, g, b];
+  return Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b) ? [232, 76, 35] : [r, g, b];
 }
 
 export function ScrollFx() {
@@ -73,13 +73,13 @@ export function ScrollFx() {
       if (barLight === light) return;
       barLight = light;
 
-      bar.style.background = light ? "rgba(241,238,232,0.72)" : "rgba(8,9,11,0.55)";
-      bar.style.borderBottomColor = light ? "rgba(12,11,10,0.14)" : "rgba(237,239,240,0.07)";
+      bar.style.background = light ? "rgba(243,242,238,0.72)" : "rgba(20,20,20,0.55)";
+      bar.style.borderBottomColor = light ? "rgba(20,20,20,0.14)" : "rgba(243,242,238,0.07)";
 
       const ink = document.querySelector<HTMLElement>("[data-bar-ink]");
-      if (ink) ink.style.color = light ? "#0C0B0A" : "#EDEFF0";
+      if (ink) ink.style.color = light ? "#141414" : "#F3F2EE";
       for (const a of document.querySelectorAll<HTMLElement>("[data-bar-nav]")) {
-        a.style.color = light ? "#4A473F" : "#8A9299";
+        a.style.color = light ? "#55544F" : "#8A8882";
       }
     };
 
@@ -127,7 +127,7 @@ export function ScrollFx() {
             // Near-black -> cream, so the section hands off to the cream
             // About block with no visible seam.
             const mix = (a: number, b: number) => Math.round(a + (b - a) * lightP);
-            el.style.backgroundColor = `rgb(${mix(8, 241)},${mix(9, 238)},${mix(11, 232)})`;
+            el.style.backgroundColor = `rgb(${mix(20, 243)},${mix(20, 242)},${mix(20, 238)})`;
           } else if (fx === "ui") {
             el.style.opacity = (1 - clamp01(zoomP / 0.25)).toFixed(3);
           } else {
@@ -146,7 +146,7 @@ export function ScrollFx() {
                   const on = accent[dim] + (target - accent[dim]) * toCream;
                   return Math.round(52 + (on - 52) * e);
                 };
-                words[i].style.color = `rgb(${ch(0, 241)},${ch(1, 238)},${ch(2, 232)})`;
+                words[i].style.color = `rgb(${ch(0, 243)},${ch(1, 242)},${ch(2, 238)})`;
               }
             }
 

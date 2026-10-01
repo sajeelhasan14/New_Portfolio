@@ -23,7 +23,7 @@ export function Work() {
   return (
     <section
       id="work"
-      className="gutter relative -mt-px bg-bg pt-[clamp(60px,7vw,120px)] pb-[clamp(40px,5vw,80px)]"
+      className="gutter graphite-grid relative -mt-px bg-bg pt-[clamp(60px,7vw,120px)] pb-[clamp(40px,5vw,80px)]"
     >
       <div className="mb-[clamp(28px,3vw,52px)] flex flex-wrap items-baseline justify-between gap-6">
         <span className="eyebrow">(03) Selected work</span>
@@ -66,7 +66,7 @@ function WorkCard({
   return (
     <article
       data-fx="rise"
-      className="clip-corner group flex flex-col overflow-hidden border border-ink/10 bg-surface transition-colors duration-300 hover:border-brand/50"
+      className="group flex flex-col overflow-hidden border border-ink/10 bg-surface transition-[border-color,box-shadow] duration-300 hover:border-brand hover:shadow-ember-sm"
     >
       <Link
         href={`/projects/${project.slug}`}

@@ -29,7 +29,7 @@ export default function ProjectsIndexPage() {
 
           <span className="eyebrow mb-4 block">
             <span aria-hidden className="text-brand-bright">
-              &gt;
+              {"//"}
             </span>
             All projects
           </span>

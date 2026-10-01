@@ -4,7 +4,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="gutter bg-cream py-[clamp(80px,10vw,180px)] text-cream-ink"
+      className="gutter paper-grid bg-cream py-[clamp(80px,10vw,180px)] text-cream-ink"
     >
       <div
         data-fx="zoom"
@@ -26,8 +26,9 @@ export function About() {
           </p>
 
           {/* Hairline grid: the 1px gap on a tinted parent draws the rules,
-              so each cell only paints its own cream ground. */}
-          <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] clip-corner gap-px overflow-hidden border border-cream-ink/14 bg-cream-ink/14">
+              so each cell only paints its own cream ground. Square, not
+              clip-corner — a clip-path would crop the ember offset. */}
+          <div className="mt-2 mr-2 grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-px border border-cream-ink bg-cream-ink/14 shadow-ember-sm">
             {STATS.map((stat) => (
               <div
                 key={stat.label}

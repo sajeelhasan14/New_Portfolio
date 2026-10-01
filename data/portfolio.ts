@@ -329,8 +329,8 @@ export const EXPERIENCE = [
     id: 1,
     company: "Marktecs",
     position: "Full Stack Developer",
-    duration: "January 2026 – Present",
-    current: true,
+    duration: "January 2026 – July 2026",
+    current: false,
     description:
       "Architected and led frontend development of a multi-tenant e-commerce CRM — 60+ screens and 200+ components in Next.js 15, React 19 and TypeScript — and designed the Backend-for-Frontend layer underneath it.",
     highlights: [

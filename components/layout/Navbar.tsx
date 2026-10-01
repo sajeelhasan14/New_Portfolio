@@ -65,7 +65,7 @@ export function Navbar() {
 
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 bg-brand px-4 py-[9px] font-medium tracking-[0.14em] text-bg transition-colors hover:bg-fg"
+            className="inline-flex items-center gap-2 bg-brand px-4 py-[9px] font-medium tracking-[0.14em] text-bg transition-colors hover:bg-brand-deep hover:text-cream"
           >
             LET&apos;S TALK
           </Link>

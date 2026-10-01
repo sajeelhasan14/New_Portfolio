@@ -1,70 +1,74 @@
-import Link from "next/link";
-import { PROFILE } from "@/data/portfolio";
+import { PROFILE, PROJECTS, SOCIAL_LINKS } from "@/data/portfolio";
+import { Terminal } from "@/components/ui/Terminal";
+
+/**
+ * Hero, after the LinkedIn cover: headline and pitch on the left, the zsh
+ * terminal card on the right, all on a paper sheet whose grid fades out
+ * toward the edges. Ember is kept to accents — the word, the full stop and
+ * the card's offset.
+ *
+ * The section's own ground is cream, so ScrollFx paints the header
+ * ink-on-paper while the hero sits under it.
+ */
+const isFlutter = (tech: string[]) => tech.includes("Flutter");
+
+// Web projects list on their own; the Flutter apps fold into one directory.
+const WEB = PROJECTS.filter((p) => !isFlutter(p.technologies)).map((p) => p.slug);
+const FLUTTER = PROJECTS.filter((p) => isFlutter(p.technologies)).map((p) => p.slug);
+
+/** The terminal's `cat links.txt` — the hero's way out, in place of buttons. */
+const LINKS = [
+  ...SOCIAL_LINKS.filter((link) => link.icon !== "email").map((link) => ({
+    label: link.label.toLowerCase(),
+    href: link.url as string,
+  })),
+  { label: "whatsapp", href: `https://wa.me/${PROFILE.phone.replace(/[^\d]/g, "")}` },
+];
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="gutter relative flex min-h-screen flex-col justify-end pt-25 pb-12"
+      className="gutter relative flex min-h-screen flex-col justify-center bg-cream pt-28 pb-16 text-cream-ink"
     >
-      {/* Accent wash bleeding down from the top-right */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_10%,var(--brand-wash),transparent_70%)]"
-      />
+      <div aria-hidden className="paper-grid mask-fade pointer-events-none absolute inset-0" />
 
-      <div className="relative flex flex-col gap-10">
-        <div className="flex flex-wrap items-center gap-[18px] font-mono text-[11px] tracking-[0.2em] text-muted-2">
-          <span className="inline-flex items-center gap-2 border border-ink/[0.14] px-3.5 py-[7px]">
-            {PROFILE.availability.toUpperCase()}
-          </span>
-          <span>{PROFILE.location.toUpperCase()}</span>
-          
-        </div>
-
-        <h1
-          data-fx="rise"
-          // The design's ramp, with a lower floor: its 52px minimum clips
-          // "systems behind" against the gutter below ~450px. Identical to
-          // the design at every width where 11.5vw already clears 52px.
-          className="m-0 text-[clamp(44px,11.5vw,196px)] leading-[0.86] font-medium tracking-[-0.045em] text-balance"
-        >
-          I build the
-          <br />
-          <em className="text-brand not-italic">systems</em> behind
-          <br />
-          the product
-        </h1>
-
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-end gap-7 border-t border-ink/10 pt-7">
-          <p className="m-0 max-w-[42ch] text-[clamp(15px,1.4vw,19px)] leading-[1.55] text-pretty text-muted">
-            Software Engineering student in Karachi, full-stack developer at Marktecs. I build
-            multi-tenant web apps, the APIs and data models under them, and AI agents that do
-            real work.
+      <div className="relative grid items-center gap-x-[clamp(40px,5vw,96px)] gap-y-16 lg:grid-cols-[minmax(0,1fr)_minmax(340px,440px)]">
+        <div className="flex flex-col gap-9">
+          <p className="m-0 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[clamp(12px,1vw,14px)]">
+            <span aria-hidden className="size-2 animate-blink rounded-full bg-brand" />
+            <span className="text-brand-ink">{PROFILE.location}</span>
+            <span aria-hidden className="hidden text-cream-ink/25 sm:inline">
+              ·
+            </span>
+            <span className="text-cream-muted">{PROFILE.availability}</span>
           </p>
 
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="#work"
-              className="inline-flex items-center gap-2.5 bg-brand px-6.5 py-[15px] text-sm font-semibold text-bg transition-colors hover:bg-fg"
-            >
-              See selected work →
-            </Link>
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2.5 border border-ink/20 px-6.5 py-[15px] text-sm font-medium text-fg transition-colors hover:border-fg"
-            >
-              Get in touch
-            </Link>
-          </div>
+          <h1
+            data-fx="rise"
+            // The design's ramp, with a lower floor: its 52px minimum clips
+            // "systems behind" against the gutter below ~450px. Steps down at
+            // lg, where the terminal takes the right-hand column.
+            className="m-0 text-[clamp(44px,11.5vw,196px)] leading-[0.86] font-medium tracking-[-0.045em] text-balance lg:text-[clamp(44px,6.6vw,128px)]"
+          >
+            I build the
+            <br />
+            <em className="text-outline not-italic">systems</em> behind
+            <br />
+            the product
+            <span
+              aria-hidden
+              className="ml-[0.04em] inline-block size-[0.13em] bg-brand align-baseline"
+            />
+          </h1>
 
-          <div className="flex flex-col gap-1.5 font-mono text-[11px] tracking-[0.16em] text-muted-2">
-            <span>SCROLL TO EXPLORE</span>
-            <span className="text-brand" aria-hidden>
-              ↓
-            </span>
-          </div>
+          <p className="m-0 max-w-[44ch] text-[clamp(15px,1.3vw,18px)] leading-[1.6] text-pretty text-cream-muted">
+            Software Engineering student and full-stack developer. I build multi-tenant web
+            apps, the APIs and data models under them, and AI agents that do real work.
+          </p>
         </div>
+
+        <Terminal web={WEB} flutter={FLUTTER} links={LINKS} email={PROFILE.email} />
       </div>
     </section>
   );

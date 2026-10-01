@@ -2,40 +2,43 @@
 
 /* ============================================================
    Design tokens — ported from design/Portfolio.dc.html
-   Two grounds, not one: a near-black stage (#08090B) and a warm
-   cream slab (#F1EEE8) that the About/Services block sits on.
-   One accent (#4DFFB8) carries every highlight.
+   Two grounds, not one: a graphite stage (#141414) and a paper
+   slab (#F3F2EE) that the About/Services block sits on.
+   One accent, ember (#E84C23), carries every highlight.
    ============================================================ */
 @theme {
   /* Dark ground */
-  --color-bg: #08090b;
-  --color-surface: #0e1013;
-  --color-surface-2: #111417;
-  --color-border: #1f2124;
-  --color-border-strong: #363739;
+  --color-bg: #141414;
+  --color-surface: #1a1a19;
+  --color-surface-2: #1f1f1e;
+  --color-border: #2a2a28;
+  --color-border-strong: #3d3c39;
 
-  /* The mint. `ink` is the cream-slab variant: green is perceptually far
-     brighter than blue, so the design's L=38% rule only reached 2.0:1 on
-     #F1EEE8. Pinned to L=20% instead for 6.1:1, matching the old blue. */
-  --color-brand: #4dffb8;
-  --color-brand-bright: #8affd0;
-  --color-brand-deep: #00995c;
-  --color-brand-ink: #00663d;
+  /* Ember. `ink` is the variant for text on the paper slab (6.6:1). */
+  --color-brand: #e84c23;
+  --color-brand-bright: #f96c4a;
+  --color-brand-deep: #cc2d00;
+  --color-brand-ink: #a12a07;
 
   /* Text on the dark ground. `ink` is the raw paper colour — use it
      with an opacity modifier (border-ink/10) for the hairlines the
-     design draws as rgba(237,239,240,0.1). */
-  --color-ink: #edeff0;
-  --color-fg: #edeff0;
-  --color-muted: #a7aeb4;
-  --color-muted-2: #8a9299;
-  --color-dim: #6c757c;
+     design draws as rgba(243,242,238,0.1). */
+  --color-ink: #f3f2ee;
+  --color-fg: #f3f2ee;
+  --color-muted: #a8a6a0;
+  --color-muted-2: #8a8882;
+  --color-dim: #77756f;
 
-  /* Cream slab */
-  --color-cream: #f1eee8;
-  --color-cream-ink: #0c0b0a;
-  --color-cream-muted: #55524c;
-  --color-cream-dim: #6b665c;
+  /* Paper slab */
+  --color-cream: #f3f2ee;
+  --color-cream-ink: #141414;
+  --color-cream-muted: #55544f;
+  --color-cream-dim: #6b6a66;
+  --color-cream-2: #ebeae5;
+
+  /* The cover's hard offset: an ember slab sitting behind a card. */
+  --shadow-ember: 12px 12px 0 0 var(--color-brand);
+  --shadow-ember-sm: 8px 8px 0 0 var(--color-brand);
 
   /* Type */
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
@@ -56,12 +59,19 @@
    site means editing the four tokens above plus these four lines — not
    hunting rgba() literals through a dozen components. */
 :root {
-  --brand-soft: rgba(77, 255, 184, 0.08);
-  --brand-wash: rgba(77, 255, 184, 0.12);
-  --brand-strong: rgba(77, 255, 184, 0.22);
-  --brand-heavy: rgba(77, 255, 184, 0.35);
-  --brand-glow: rgba(77, 255, 184, 0.7);
-  --brand-glow-hi: rgba(77, 255, 184, 0.9);
+  --brand-soft: rgba(232, 76, 35, 0.08);
+  --brand-wash: rgba(232, 76, 35, 0.12);
+  --brand-strong: rgba(232, 76, 35, 0.22);
+  --brand-heavy: rgba(232, 76, 35, 0.35);
+  --brand-glow: rgba(232, 76, 35, 0.7);
+  --brand-glow-hi: rgba(232, 76, 35, 0.9);
+
+  /* Graph-paper rules, one per ground. The neutral one reads on both,
+     for the statement stage that crossfades between them. */
+  --grid-paper: rgba(20, 20, 20, 0.06);
+  --grid-graphite: rgba(243, 242, 238, 0.035);
+  --grid-neutral: rgba(128, 127, 122, 0.1);
+  --grid-pitch: 56px;
 }
 
 @keyframes mq {
@@ -145,6 +155,10 @@
 
   body {
     background-color: var(--color-bg);
+    background-image:
+      linear-gradient(to right, var(--grid-graphite) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-graphite) 1px, transparent 1px);
+    background-size: var(--grid-pitch) var(--grid-pitch);
     color: var(--color-fg);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -197,7 +211,13 @@
 
   /* Mono section label: (01) ABOUT */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.24em] text-brand uppercase;
+    @apply inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[0.24em] text-brand uppercase;
+  }
+  /* The cover's ember dot. Always the full ember, even when the label
+     itself drops to the darker ink variant on paper. */
+  .eyebrow::before {
+    content: "";
+    @apply size-1.5 shrink-0 rounded-full bg-brand;
   }
   .eyebrow-ink {
     @apply text-brand-ink;
@@ -244,12 +264,44 @@
     @apply hover:border-brand hover:bg-surface-2;
   }
 
+  /* Outlined ember word. The fill is the paper colour painted over the
+     stroke's inner half, which hides the overlapping contours a variable
+     font shows through a transparent fill. Visible stroke is half the
+     width given here. */
+  .text-outline {
+    color: var(--color-cream);
+    -webkit-text-stroke: clamp(3px, 0.4vw, 6px) var(--color-brand);
+    paint-order: stroke fill;
+  }
+
   .text-gradient {
     @apply bg-linear-to-r from-brand-bright via-brand to-brand-bright bg-clip-text text-transparent;
   }
 
   .orb {
     @apply pointer-events-none absolute rounded-full blur-[100px] will-change-transform;
+  }
+
+  /* Graph-paper grounds from the cover. Paint these on a section; the
+     body already carries the graphite one for transparent sections. */
+  .paper-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-paper) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-paper) 1px, transparent 1px);
+    background-size: var(--grid-pitch) var(--grid-pitch);
+  }
+  .graphite-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-graphite) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-graphite) 1px, transparent 1px);
+    background-size: var(--grid-pitch) var(--grid-pitch);
+  }
+  /* Only the image: ScrollFx owns this element's background-color. */
+  .stage-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-neutral) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-neutral) 1px, transparent 1px);
+    background-size: var(--grid-pitch) var(--grid-pitch);
   }
 
   .dot-grid {

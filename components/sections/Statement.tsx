@@ -17,7 +17,7 @@ export function Statement() {
     <section data-statement="" className="relative h-[440vh] bg-cream">
       <div
         data-fx="stage"
-        className="gutter sticky top-0 flex h-screen items-center justify-center overflow-hidden bg-bg"
+        className="gutter stage-grid sticky top-0 flex h-screen items-center justify-center overflow-hidden bg-bg"
       >
         <div
           data-fx="grow"
@@ -25,7 +25,7 @@ export function Statement() {
         >
           <p
             data-fill="1"
-            className="m-0 text-[clamp(26px,4.2vw,72px)] leading-[1.12] font-medium tracking-[-0.035em] text-balance text-[#34383E]"
+            className="m-0 text-[clamp(26px,4.2vw,72px)] leading-[1.12] font-medium tracking-[-0.035em] text-balance text-[#3d3c39]"
           >
             {STATEMENT.split(" ").map((word, i) => (
               // Each word is its own span so the fill can light them in turn.
